@@ -1,20 +1,98 @@
-import { create } from 'zustand';
+import { create } from "zustand";
+import { persist } from "zustand/middleware";
 
-export const useStore = create((set) => ({
-  devices: [
-    { id: 1, name: 'Living Room Light', status: false },
-    { id: 2, name: 'Thermostat', status: 22 },
-  ],
-  toggleDevice: (id) =>
-    set((state) => ({
-      devices: state.devices.map((d) =>
-        d.id === id
-          ? { ...d, status: typeof d.status === 'boolean' ? !d.status : d.status }
-          : d
-      ),
-    })),
-  setDeviceStatus: (id, status) =>
-    set((state) => ({
-      devices: state.devices.map((d) => (d.id === id ? { ...d, status } : d)),
-    })),
-}));
+export const useStore = create(
+  persist(
+    (set) => ({
+      // Lights
+      lights: [
+        { id: 1, room: "Living Room", status: true, brightness: 80, color: "#FFD700" },
+        { id: 2, room: "Bedroom", status: false, brightness: 0, color: "#FFFFFF" },
+        { id: 3, room: "Kitchen", status: true, brightness: 60, color: "#FFA500" },
+        { id: 4, room: "Master Bedroom", status: true, brightness: 70, color: "#FF69B4" },
+        { id: 5, room: "Kids Room 1", status: false, brightness: 0, color: "#ADD8E6" },
+        { id: 6, room: "Kids Room 2", status: true, brightness: 50, color: "#90EE90" },
+        { id: 7, room: "Family Room", status: false, brightness: 0, color: "#FFB347" },
+      ],
+      toggleLight: (id) =>
+        set((state) => ({
+          lights: state.lights.map((l) =>
+            l.id === id ? { ...l, status: !l.status } : l
+          ),
+        })),
+      setLightBrightness: (id, value) =>
+        set((state) => ({
+          lights: state.lights.map((l) =>
+            l.id === id ? { ...l, brightness: Number(value) } : l
+          ),
+        })),
+      setLightColor: (id, value) =>
+        set((state) => ({
+          lights: state.lights.map((l) =>
+            l.id === id ? { ...l, color: value } : l
+          ),
+        })),
+
+      // Thermostats
+      zones: [
+        { id: 1, name: "Living Room", temp: 22, mode: "Normal", active: false },
+        { id: 2, name: "Master Bedroom", temp: 22, mode: "Normal", active: false },
+        { id: 3, name: "Kids Room 1", temp: 22, mode: "Normal", active: false },
+        { id: 4, name: "Kitchen", temp: 22, mode: "Normal", active: false },
+      ],
+      toggleZone: (id) =>
+        set((state) => ({
+          zones: state.zones.map((z) =>
+            z.id === id ? { ...z, active: !z.active } : z
+          ),
+        })),
+      setZoneMode: (id, mode, temp) =>
+        set((state) => ({
+          zones: state.zones.map((z) =>
+            z.id === id ? { ...z, mode, temp } : z
+          ),
+        })),
+      setZoneTemp: (id, temp) =>
+        set((state) => ({
+          zones: state.zones.map((z) =>
+            z.id === id ? { ...z, temp: Number(temp) } : z
+          ),
+        })),
+
+      // Cameras
+      cameras: [
+        { id: 1, name: "Front Door", status: true, mic: false },
+        { id: 2, name: "Backyard", status: false, mic: false },
+        { id: 3, name: "Garage", status: true, mic: false },
+      ],
+      toggleCamera: (id) =>
+        set((state) => ({
+          cameras: state.cameras.map((c) =>
+            c.id === id ? { ...c, status: !c.status } : c
+          ),
+        })),
+      toggleMic: (id) =>
+        set((state) => ({
+          cameras: state.cameras.map((c) =>
+            c.id === id ? { ...c, mic: !c.mic } : c
+          ),
+        })),
+
+      // Locks
+      locks: [
+        { id: 1, name: "Front Door", locked: true },
+        { id: 2, name: "Back Door", locked: false },
+        { id: 3, name: "Garage Door", locked: true },
+      ],
+      toggleLock: (id) =>
+        set((state) => ({
+          locks: state.locks.map((l) =>
+            l.id === id ? { ...l, locked: !l.locked } : l
+          ),
+        })),
+    }),
+    {
+      name: "smart-home-storage", // nombre en localStorage
+    }
+  )
+);

@@ -1,12 +1,5 @@
-import { useState } from "react";
 import Footer from "../components/Footer";
-
-const initialZones = [
-  { id: 1, name: "Living Room", temp: 22, mode: "Normal", active: true },
-  { id: 2, name: "Master Bedroom", temp: 22, mode: "Normal", active: true },
-  { id: 3, name: "Kids Room 1", temp: 22, mode: "Normal", active: false },
-  { id: 4, name: "Kitchen", temp: 22, mode: "Normal", active: false },
-];
+import { useStore } from "../store/useStore";
 
 const modes = {
   Hielo: { temp: 16, icon: "🧊", color: "bg-blue-600" },
@@ -16,95 +9,82 @@ const modes = {
 };
 
 const ThermostatPage = () => {
-  const [zones, setZones] = useState(initialZones);
+  const zones = useStore((state) => state.zones);
+  const toggleZone = useStore((state) => state.toggleZone);
+  const setZoneMode = useStore((state) => state.setZoneMode);
+  const setZoneTemp = useStore((state) => state.setZoneTemp);
 
-  const toggleZone = (id) => {
-    setZones((prev) =>
-      prev.map((z) => (z.id === id ? { ...z, active: !z.active } : z))
-    );
-  };
-
-  const changeMode = (id, modeName) => {
-    setZones((prev) =>
-      prev.map((z) =>
-        z.id === id ? { ...z, mode: modeName, temp: modes[modeName].temp } : z
-      )
-    );
-  };
-
-  const changeTemp = (id, value) => {
-    setZones((prev) =>
-      prev.map((z) => (z.id === id ? { ...z, temp: Number(value) } : z))
-    );
+  const handleModeChange = (id, mode) => {
+    setZoneMode(id, mode, modes[mode].temp);
   };
 
   return (
     <div className="flex flex-col min-h-screen bg-gray-900 text-white px-4 py-8">
-      <main className="flex-grow max-w-5xl mx-auto">
+      <main className="flex-grow max-w-6xl mx-auto">
         <h1 className="text-4xl font-bold mb-4 text-center">Thermostat Control</h1>
-        <p className="text-center text-gray-400 mb-10">
-          Adjust temperatures by zone
-        </p>
+        <p className="text-center text-gray-400 mb-10">Adjust temperatures by zone</p>
 
-        <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-2">
+        <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {zones.map((zone) => (
             <div
               key={zone.id}
-              className={`bg-gradient-to-br from-gray-800 to-gray-900 p-6 rounded-3xl shadow-xl transition hover:shadow-2xl`}
+              className={`bg-gradient-to-br from-gray-800 to-gray-900 p-6 rounded-3xl shadow-xl transition hover:shadow-2xl flex flex-col items-center
+                ${!zone.active ? "opacity-50" : ""}`}
             >
-              <div className="flex justify-between items-center mb-4">
-                <h2 className="text-xl font-semibold">{zone.name}</h2>
-                <button
-                  onClick={() => toggleZone(zone.id)}
-                  className={`px-3 py-1 rounded text-sm ${
-                    zone.active ? "bg-green-600 hover:bg-green-700" : "bg-red-600 hover:bg-red-700"
-                  }`}
-                >
-                  {zone.active ? "ON" : "OFF"}
-                </button>
-              </div>
+              <h2 className="text-xl font-semibold mb-2">{zone.name}</h2>
 
+              {/* Toggle */}
+              <label className="relative inline-flex items-center cursor-pointer mb-4">
+                <input
+                  type="checkbox"
+                  checked={zone.active}
+                  onChange={() => toggleZone(zone.id)}
+                  className="sr-only peer"
+                />
+                <div className="w-14 h-7 bg-gray-700 rounded-full peer peer-checked:bg-green-500 transition-all"></div>
+                <div className="absolute left-1 top-1 w-5 h-5 bg-white rounded-full shadow-md transition-all peer-checked:translate-x-7"></div>
+              </label>
+
+              {/* Icon y Temperatura */}
               <div className="text-center mb-4">
                 <div className="text-6xl mb-2">{modes[zone.mode].icon}</div>
                 <div className="text-3xl font-bold">{zone.temp}°C</div>
               </div>
 
-              {zone.active && (
-                <>
-                  {/* Mode Selector */}
-                  <div className="mb-4">
-                    <label className="block mb-1 text-sm text-gray-300">Mode</label>
-                    <select
-                      value={zone.mode}
-                      onChange={(e) => changeMode(zone.id, e.target.value)}
-                      className="bg-gray-700 px-4 py-2 rounded w-full"
-                    >
-                      {Object.keys(modes).map((m) => (
-                        <option key={m} value={m}>
-                          {m}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
+              {/* Selector de Modo */}
+              <div className="mb-4 w-full">
+                <label className="block mb-1 text-sm text-gray-300">Mode</label>
+                <select
+                  value={zone.mode}
+                  onChange={(e) => handleModeChange(zone.id, e.target.value)}
+                  className="bg-gray-700 px-4 py-2 rounded w-full"
+                  disabled={!zone.active}
+                >
+                  {Object.keys(modes).map((m) => (
+                    <option key={m} value={m}>{m}</option>
+                  ))}
+                </select>
+              </div>
 
-                  {/* Temperature Slider */}
-                  <div>
-                    <label className="block mb-1 text-sm text-gray-300">Temperature</label>
-                    <input
-                      type="range"
-                      min="16"
-                      max="30"
-                      value={zone.temp}
-                      onChange={(e) => changeTemp(zone.id, e.target.value)}
-                      className="w-full accent-yellow-400"
-                    />
-                  </div>
-                </>
-              )}
+              {/* Slider de Temperatura */}
+              <div className="w-full">
+                <label className="block mb-1 text-sm text-gray-300">Temperature</label>
+                <input
+                  type="range"
+                  min="16"
+                  max="30"
+                  value={zone.temp}
+                  onChange={(e) => setZoneTemp(zone.id, e.target.value)}
+                  className="w-full accent-yellow-400"
+                  disabled={!zone.active}
+                />
+              </div>
             </div>
           ))}
         </div>
       </main>
+
+      <div className="mt-16" />
       <Footer />
     </div>
   );

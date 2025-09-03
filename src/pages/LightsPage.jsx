@@ -1,33 +1,11 @@
-import { useState } from "react";
 import Footer from "../components/Footer";
-
-const initialLights = [
-  { id: 1, room: "Living Room", status: true, brightness: 80, color: "#FFD700" },
-  { id: 2, room: "Bedroom", status: false, brightness: 0, color: "#FFFFFF" },
-  { id: 3, room: "Kitchen", status: true, brightness: 60, color: "#FFA500" },
-  { id: 4, room: "Master Bedroom", status: true, brightness: 70, color: "#FF69B4" },
-  { id: 5, room: "Kids Room 1", status: false, brightness: 0, color: "#ADD8E6" },
-  { id: 6, room: "Kids Room 2", status: true, brightness: 50, color: "#90EE90" },
-  { id: 7, room: "Family Room", status: false, brightness: 0, color: "#FFB347" },
-];
+import { useStore } from "../store/useStore";
 
 const LightsPage = () => {
-  const [lights, setLights] = useState(initialLights);
-
-  const toggleLight = (id) =>
-    setLights((prev) =>
-      prev.map((l) => (l.id === id ? { ...l, status: !l.status } : l))
-    );
-
-  const changeBrightness = (id, value) =>
-    setLights((prev) =>
-      prev.map((l) => (l.id === id ? { ...l, brightness: Number(value) } : l))
-    );
-
-  const changeColor = (id, value) =>
-    setLights((prev) =>
-      prev.map((l) => (l.id === id ? { ...l, color: value } : l))
-    );
+  const lights = useStore((state) => state.lights);
+  const toggleLight = useStore((state) => state.toggleLight);
+  const setLightBrightness = useStore((state) => state.setLightBrightness);
+  const setLightColor = useStore((state) => state.setLightColor);
 
   const totalLights = lights.length;
   const lightsOn = lights.filter((l) => l.status).length;
@@ -36,12 +14,7 @@ const LightsPage = () => {
     <div className="flex flex-col min-h-screen bg-gray-900 text-white px-4 py-8">
       <main className="flex-grow max-w-6xl mx-auto">
         <h1 className="text-4xl font-bold mb-2 text-center">Lights Control</h1>
-
-        <p className="text-center text-gray-400 mb-2">
-          Manage all the lights in your home
-        </p>
-
-        {/* Lights On/Off Counter */}
+        <p className="text-center text-gray-400 mb-2">Manage all the lights in your home</p>
         <p
           className={`text-center mb-6 font-medium ${
             lightsOn === 0
@@ -54,7 +27,6 @@ const LightsPage = () => {
           {lightsOn}/{totalLights} lights ON
         </p>
 
-        {/* Responsive Grid: 1 column default, 2 sm, 3 md, 4 lg */}
         <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {lights.map((light) => (
             <div
@@ -63,7 +35,7 @@ const LightsPage = () => {
             >
               <h2 className="text-xl font-semibold mb-2">{light.room}</h2>
 
-              {/* Toggle Switch */}
+              {/* Toggle */}
               <label className="relative inline-flex items-center cursor-pointer mb-4">
                 <input
                   type="checkbox"
@@ -75,28 +47,26 @@ const LightsPage = () => {
                 <div className="absolute left-1 top-1 w-6 h-6 bg-white rounded-full shadow-md transition-all peer-checked:translate-x-8"></div>
               </label>
 
-              {/* Brightness Slider */}
+              {/* Brightness */}
               <div className="w-full">
-                <label className="block mb-1 text-sm text-gray-300">
-                  Brightness: {light.brightness}%
-                </label>
+                <label className="block mb-1 text-sm text-gray-300">Brightness: {light.brightness}%</label>
                 <input
                   type="range"
                   min="0"
                   max="100"
                   value={light.brightness}
-                  onChange={(e) => changeBrightness(light.id, e.target.value)}
+                  onChange={(e) => setLightBrightness(light.id, e.target.value)}
                   className="w-full accent-yellow-400"
                 />
               </div>
 
-              {/* Color Picker */}
+              {/* Color */}
               <div className="mt-4 flex items-center justify-center gap-4">
                 <label className="block mb-1 text-sm text-gray-300">Color</label>
                 <input
                   type="color"
                   value={light.color}
-                  onChange={(e) => changeColor(light.id, e.target.value)}
+                  onChange={(e) => setLightColor(light.id, e.target.value)}
                   className="w-12 h-10 p-0 border rounded cursor-pointer"
                 />
               </div>
@@ -104,8 +74,7 @@ const LightsPage = () => {
           ))}
         </div>
       </main>
-
-      <div className="mt-16" /> {/* extra spacing before footer */}
+      <div className="mt-16" />
       <Footer />
     </div>
   );
