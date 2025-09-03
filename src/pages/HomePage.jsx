@@ -5,9 +5,9 @@ import Footer from '../components/Footer';
 
 const HomePage = () => {
   const features = [
-    { icon: '🎛️', title: 'Device Control', description: 'Easily control all your smart home devices from a single app' },
-    { icon: '📊', title: 'Energy Usage', description: 'Monitor and optimize your energy consumption' },
-    { icon: '📈', title: 'Usage Reports', description: 'Get detailed reports on your home’s energy usage' },
+    { icon: '🎛️', title: 'Device Control', description: 'Easily control all your smart home devices from a single app', route: '/devices' },
+    { icon: '📊', title: 'Energy Usage', description: 'Monitor and optimize your energy consumption', route: '/reports' },
+    { icon: '📈', title: 'Usage Reports', description: 'Get detailed reports on your home’s energy usage', route: '/reports' },
   ];
 
   return (
