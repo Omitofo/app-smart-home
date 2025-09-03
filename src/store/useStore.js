@@ -94,6 +94,18 @@ export const useStore = create(
             s.id === id ? { ...s, volume: Number(value) } : s
             ),
         })),
+        settings: [
+  { id: 1, name: "Notifications", enabled: true },
+  { id: 2, name: "Dark Mode", enabled: true },
+  { id: 3, name: "Auto Updates", enabled: false },
+  { id: 4, name: "Energy Saver Mode", enabled: false },
+],
+toggleSetting: (id) =>
+  set((state) => ({
+    settings: state.settings.map((s) =>
+      s.id === id ? { ...s, enabled: !s.enabled } : s
+    ),
+  })),
       // Locks
       locks: [
         { id: 1, name: "Front Door", locked: true },
@@ -107,6 +119,7 @@ export const useStore = create(
           ),
         })),
     }),
+    
     {
       name: "smart-home-storage", // nombre en localStorage
     }
