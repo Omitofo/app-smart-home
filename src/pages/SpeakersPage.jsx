@@ -1,42 +1,30 @@
-import { useState } from "react";
 import Footer from "../components/Footer";
-
-const initialSpeakers = [
-  { id: 1, room: "Living Room", status: true, volume: 70 },
-  { id: 2, room: "Kitchen", status: false, volume: 0 },
-];
+import { useStore } from "../store/useStore";
 
 const SpeakersPage = () => {
-  const [speakers, setSpeakers] = useState(initialSpeakers);
-
-  const toggleSpeaker = (id) =>
-    setSpeakers((prev) =>
-      prev.map((s) => (s.id === id ? { ...s, status: !s.status } : s))
-    );
-
-  const changeVolume = (id, value) =>
-    setSpeakers((prev) =>
-      prev.map((s) => (s.id === id ? { ...s, volume: Number(value) } : s))
-    );
+  const speakers = useStore((state) => state.speakers);
+  const toggleSpeaker = useStore((state) => state.toggleSpeaker);
+  const setSpeakerVolume = useStore((state) => state.setSpeakerVolume);
 
   return (
     <div className="flex flex-col min-h-screen bg-gray-900 text-white px-4 py-8">
-      <main className="flex-grow max-w-5xl mx-auto">
+      <main className="flex-grow max-w-6xl mx-auto">
         <h1 className="text-4xl font-bold mb-4 text-center">Speakers Control</h1>
         <p className="text-center text-gray-400 mb-10">
-          Tap a speaker card to toggle or adjust the volume
+          Click a card to toggle ON/OFF. Adjust volume for active speakers.
         </p>
 
-        <div className="grid gap-8 sm:grid-cols-2">
+        <div className="flex flex-wrap justify-center gap-8">
           {speakers.map((speaker) => (
             <div
               key={speaker.id}
-              className="group relative bg-gradient-to-br from-gray-800 to-gray-900 p-6 rounded-3xl shadow-xl flex flex-col items-center text-center transition hover:-translate-y-2 hover:scale-105 hover:shadow-2xl"
+              onClick={() => toggleSpeaker(speaker.id)}
+              className={`relative cursor-pointer bg-gradient-to-br from-gray-800 to-gray-900 p-6 rounded-3xl shadow-xl flex flex-col items-center text-center
+                transition-transform transform hover:-translate-y-1 hover:scale-105 hover:shadow-2xl
+                ${!speaker.status ? "opacity-50 grayscale" : ""}`}
             >
               {/* Speaker Icon */}
-              <div className="text-6xl mb-4 transition-transform duration-300 group-hover:rotate-6">
-                🔊
-              </div>
+              <div className="text-6xl mb-4">{speaker.status ? "🔊" : "🔇"}</div>
 
               {/* Room Name */}
               <h2 className="text-xl font-semibold mb-2">{speaker.room}</h2>
@@ -61,7 +49,8 @@ const SpeakersPage = () => {
                     min="0"
                     max="100"
                     value={speaker.volume}
-                    onChange={(e) => changeVolume(speaker.id, e.target.value)}
+                    onClick={(e) => e.stopPropagation()} // para que no toggle al ajustar
+                    onChange={(e) => setSpeakerVolume(speaker.id, e.target.value)}
                     className="w-full accent-blue-400"
                   />
                 </div>

@@ -77,7 +77,23 @@ export const useStore = create(
             c.id === id ? { ...c, mic: !c.mic } : c
           ),
         })),
-
+        // Speakers
+        speakers: [
+        { id: 1, room: "Living Room", status: true, volume: 70 },
+        { id: 2, room: "Kitchen", status: false, volume: 0 },
+        ],
+        toggleSpeaker: (id) =>
+        set((state) => ({
+            speakers: state.speakers.map((s) =>
+            s.id === id ? { ...s, status: !s.status } : s
+            ),
+        })),
+        setSpeakerVolume: (id, value) =>
+        set((state) => ({
+            speakers: state.speakers.map((s) =>
+            s.id === id ? { ...s, volume: Number(value) } : s
+            ),
+        })),
       // Locks
       locks: [
         { id: 1, name: "Front Door", locked: true },
