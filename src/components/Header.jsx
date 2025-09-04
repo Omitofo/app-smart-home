@@ -1,8 +1,22 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const goToContact = () => {
+    if (location.pathname === "/") {
+      // Already on home, scroll to contact
+      const element = document.getElementById("contact");
+      if (element) element.scrollIntoView({ behavior: "smooth" });
+    } else {
+      // Navigate to home with hash
+      navigate("/#contact");
+    }
+    setIsOpen(false); // close sidebar
+  };
 
   return (
     <>
@@ -15,7 +29,7 @@ const Header = () => {
           ☰
         </button>
 
-        {/* SmartHome Logo that links to Home */}
+        {/* Logo */}
         <Link
           to="/"
           className="font-bold text-lg hover:text-green-400 transition-colors"
@@ -34,7 +48,7 @@ const Header = () => {
         />
       )}
 
-      {/* Sidebar Menu */}
+      {/* Sidebar */}
       <aside
         className={`fixed top-0 left-0 h-full w-64 bg-gray-800 text-white shadow-lg z-30 transform transition-transform duration-300 ${
           isOpen ? "translate-x-0" : "-translate-x-full"
@@ -113,10 +127,16 @@ const Header = () => {
           >
             ⚙️ Settings
           </Link>
+          <button
+            onClick={goToContact}
+            className="hover:text-green-400 transition-colors text-left"
+          >
+            📩 Contact Us
+          </button>
         </nav>
       </aside>
 
-      {/* Spacer so page content doesn't go under header */}
+      {/* Spacer so content doesn't go under sticky header */}
       <div className="h-16" />
     </>
   );

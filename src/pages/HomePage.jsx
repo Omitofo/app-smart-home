@@ -28,7 +28,6 @@ const HomePage = () => {
   return (
     <div className="flex flex-col min-h-screen bg-gray-900 text-white">
       <main className="flex-grow px-4 py-8 max-w-7xl mx-auto">
-        {/* Hero */}
         <Hero />
 
         {/* Features */}
@@ -45,7 +44,9 @@ const HomePage = () => {
         </section>
 
         {/* Contact Us */}
-        <ContactUs />
+        <section id="contact" className="mt-16">
+          <ContactUs />
+        </section>
       </main>
     </div>
   );

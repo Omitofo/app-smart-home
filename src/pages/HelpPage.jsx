@@ -1,26 +1,39 @@
+import Hero from '../components/Hero';
+import FeatureCard from '../components/FeatureCard';
+import ContactUs from '../components/ContactUs';
 
-const HelpPage = () => {
-  const faqs = [
-    { q: "How do I add a new device?", a: "Go to Devices > Add Device, and follow the steps." },
-    { q: "How do I reset a device?", a: "Click on the device and select 'Reset'. Make sure it's powered on." },
-    { q: "Can I schedule lights to turn on/off?", a: "Yes, use the automation section under each light's settings." },
+const HomePage = () => {
+  const features = [
+    { icon: '🎛️', title: 'Device Control', description: 'Easily control all your smart home devices from a single app', route: '/devices' },
+    { icon: '📊', title: 'Energy Usage', description: 'Monitor and optimize your energy consumption', route: '/reports' },
+    { icon: '📈', title: 'Usage Reports', description: 'Get detailed reports on your home’s energy usage', route: '/reports' },
   ];
 
   return (
     <div className="flex flex-col min-h-screen bg-gray-900 text-white">
-      <main className="flex-grow px-4 py-8 max-w-5xl mx-auto">
-        <h1 className="text-4xl font-bold mb-6 text-center text-cyan-400">Help & FAQs</h1>
-        <div className="space-y-4">
-          {faqs.map((faq, index) => (
-            <div key={index} className="bg-gray-800 p-6 rounded-2xl shadow-lg hover:shadow-2xl transition">
-              <h2 className="font-semibold text-lg mb-2">{faq.q}</h2>
-              <p className="text-gray-300">{faq.a}</p>
-            </div>
-          ))}
-        </div>
+      <main className="flex-grow px-4 py-8 max-w-7xl mx-auto">
+        <Hero />
+
+        {/* Features */}
+        <section className="mt-16">
+          <h2 className="text-3xl font-bold text-center mb-4">App Features</h2>
+          <p className="text-center text-gray-400 mb-10">
+            Control various smart home devices with just one app
+          </p>
+          <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
+            {features.map((f, index) => (
+              <FeatureCard key={index} {...f} />
+            ))}
+          </div>
+        </section>
+
+        {/* Contact Us section */}
+        <section id="contact" className="mt-20">
+          <ContactUs />
+        </section>
       </main>
     </div>
   );
 };
 
-export default HelpPage;
+export default HomePage;

@@ -21,7 +21,7 @@ const Layout = () => (
   <div className="flex flex-col min-h-screen bg-gray-900 text-white">
     <Header />
     <main className="flex-grow p-4">
-      <Outlet /> {/* Aquí se renderiza la página */}
+      <Outlet />
     </main>
     <Footer />
   </div>
