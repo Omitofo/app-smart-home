@@ -78,22 +78,27 @@ export const useStore = create(
           ),
         })),
         // Speakers
-        speakers: [
-        { id: 1, room: "Living Room", status: true, volume: 70 },
-        { id: 2, room: "Kitchen", status: false, volume: 0 },
-        ],
-        toggleSpeaker: (id) =>
-        set((state) => ({
-            speakers: state.speakers.map((s) =>
-            s.id === id ? { ...s, status: !s.status } : s
-            ),
-        })),
-        setSpeakerVolume: (id, value) =>
-        set((state) => ({
-            speakers: state.speakers.map((s) =>
-            s.id === id ? { ...s, volume: Number(value) } : s
-            ),
-        })),
+speakers: [
+  { id: 1, room: "Living Room", status: true, volume: 70 },
+  { id: 2, room: "Kitchen", status: false, volume: 0 },
+  { id: 3, room: "Master Bedroom", status: false, volume: 0 },
+  { id: 4, room: "Family Room", status: false, volume: 0 },
+  { id: 5, room: "Office", status: false, volume: 0 },
+  { id: 6, room: "Patio", status: false, volume: 0 },
+  { id: 7, room: "Garage", status: false, volume: 0 },
+],
+toggleSpeaker: (id) =>
+  set((state) => ({
+    speakers: state.speakers.map((s) =>
+      s.id === id ? { ...s, status: !s.status } : s
+    ),
+  })),
+setSpeakerVolume: (id, value) =>
+  set((state) => ({
+    speakers: state.speakers.map((s) =>
+      s.id === id ? { ...s, volume: Number(value) } : s
+    ),
+  })),
         settings: [
   { id: 1, name: "Notifications", enabled: true },
   { id: 2, name: "Dark Mode", enabled: true },
