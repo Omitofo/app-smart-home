@@ -1,4 +1,3 @@
-import Footer from "../components/Footer";
 import { useStore } from "../store/useStore";
 
 const LightsPage = () => {
@@ -74,8 +73,6 @@ const LightsPage = () => {
           ))}
         </div>
       </main>
-      <div className="mt-16" />
-      <Footer />
     </div>
   );
 };

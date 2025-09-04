@@ -1,7 +1,5 @@
-import Header from '../components/Header';
 import Hero from '../components/Hero';
 import FeatureCard from '../components/FeatureCard';
-import Footer from '../components/Footer';
 
 const HomePage = () => {
   const features = [
@@ -12,7 +10,6 @@ const HomePage = () => {
 
   return (
     <div className="flex flex-col min-h-screen bg-gray-900 text-white">
-      <Header />
       <main className="flex-grow px-4 py-8 max-w-7xl mx-auto">
         <Hero />
         <section className="mt-16">
@@ -27,7 +24,6 @@ const HomePage = () => {
           </div>
         </section>
       </main>
-      <Footer />
     </div>
   );
 };

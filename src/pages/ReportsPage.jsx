@@ -1,5 +1,3 @@
-import Header from '../components/Header';
-import Footer from '../components/Footer';
 import { ResponsiveContainer, PieChart, Pie, Cell, BarChart, Bar, XAxis, YAxis, Tooltip } from 'recharts';
 
 const mockData = {
@@ -14,7 +12,6 @@ const pieColors = ['#4ade80', '#f87171', '#60a5fa', '#facc15'];
 const ReportsPage = () => {
   return (
     <div className="flex flex-col min-h-screen bg-gray-900 text-white">
-      <Header />
 
       <main className="flex-grow p-6 max-w-7xl mx-auto">
         <h2 className="text-3xl font-bold mb-6 text-center">Smart Home Usage Reports</h2>
@@ -143,7 +140,6 @@ const ReportsPage = () => {
         </div>
       </main>
 
-      <Footer />
     </div>
   );
 };

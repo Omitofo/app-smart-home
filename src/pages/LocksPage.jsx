@@ -1,4 +1,3 @@
-import Footer from "../components/Footer";
 import { useStore } from "../store/useStore";
 
 const LocksPage = () => {
@@ -49,8 +48,6 @@ const LocksPage = () => {
         </div>
       </main>
 
-      <div className="mt-16" /> {/* Spacing before footer */}
-      <Footer />
     </div>
   );
 };

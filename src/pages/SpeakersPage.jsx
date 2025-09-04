@@ -1,4 +1,3 @@
-import Footer from "../components/Footer";
 import { useStore } from "../store/useStore";
 
 const SpeakersPage = () => {
@@ -59,7 +58,6 @@ const SpeakersPage = () => {
           ))}
         </div>
       </main>
-      <Footer />
     </div>
   );
 };

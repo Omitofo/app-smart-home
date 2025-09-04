@@ -1,6 +1,5 @@
-import Footer from "../components/Footer";
 import { useStore } from "../store/useStore";
-import { FiMic } from "react-icons/fi"; // icono de micrófono
+import { FiMic } from "react-icons/fi";
 
 const CamerasPage = () => {
   const cameras = useStore((state) => state.cameras);
@@ -23,7 +22,6 @@ const CamerasPage = () => {
               key={cam.id}
               className="relative flex-shrink-0 w-72 sm:w-80 md:w-96 bg-gradient-to-br from-gray-800 to-gray-900 rounded-3xl shadow-xl hover:shadow-2xl transition p-6 flex flex-col items-center"
             >
-              {/* Mic icon top-right */}
               <button
                 onClick={() => toggleMic(cam.id)}
                 className={`absolute top-4 right-4 text-2xl transition-opacity ${
@@ -35,7 +33,6 @@ const CamerasPage = () => {
 
               <h2 className="text-2xl font-semibold mb-6">{cam.name}</h2>
 
-              {/* Camera toggle */}
               <label className="relative inline-flex items-center cursor-pointer mb-6">
                 <input
                   type="checkbox"
@@ -51,7 +48,6 @@ const CamerasPage = () => {
                 </div>
               </label>
 
-              {/* Mock live feed */}
               <div className="mt-4 w-full h-60 bg-black rounded-xl flex items-center justify-center text-gray-500 font-mono">
                 {cam.status ? "Live Feed Here" : "Camera Off"}
               </div>
@@ -59,7 +55,6 @@ const CamerasPage = () => {
           ))}
         </div>
 
-        {/* Emergency buttons */}
         <div className="mt-12 flex justify-center gap-6">
           <button className="bg-red-700 hover:bg-red-800 px-6 py-2 rounded-lg text-white font-medium transition text-sm">
             Call Police
@@ -69,9 +64,6 @@ const CamerasPage = () => {
           </button>
         </div>
       </main>
-
-      <div className="mt-16" />
-      <Footer />
     </div>
   );
 };

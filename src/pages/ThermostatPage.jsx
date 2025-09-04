@@ -1,4 +1,3 @@
-import Footer from "../components/Footer";
 import { useStore } from "../store/useStore";
 
 const modes = {
@@ -83,9 +82,6 @@ const ThermostatPage = () => {
           ))}
         </div>
       </main>
-
-      <div className="mt-16" />
-      <Footer />
     </div>
   );
 };

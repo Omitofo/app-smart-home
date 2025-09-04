@@ -1,4 +1,3 @@
-import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
 
 const devicesMock = [
@@ -42,7 +41,6 @@ const DevicesPage = () => {
           ))}
         </div>
       </main>
-      <Footer />
     </div>
   );
 };
