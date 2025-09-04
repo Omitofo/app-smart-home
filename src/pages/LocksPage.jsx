@@ -10,34 +10,33 @@ const LocksPage = () => {
   return (
     <div className="flex flex-col min-h-screen bg-gray-900 text-white px-4 py-8">
       <main className="flex-grow max-w-6xl mx-auto">
-        {/* Header */}
-        <h1 className="text-4xl font-bold mb-2 text-center">Locks Control</h1>
+        <h1 className="text-4xl font-bold mb-4 text-center">Locks Control</h1>
         <p className="text-center text-gray-400 mb-6">
           Monitor and control your doors remotely
         </p>
 
         {/* Counter */}
-        <p className="text-center mb-8 font-medium text-gray-300">
+        <p className="text-center mb-10 font-medium text-gray-300">
           {lockedCount}/{totalLocks} doors locked
         </p>
 
         {/* Locks Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 auto-rows-min">
           {locks.map((lock) => (
             <div
               key={lock.id}
               onClick={() => toggleLock(lock.id)}
-              className="cursor-pointer bg-gradient-to-br from-gray-800 to-gray-900 p-6 rounded-3xl shadow-lg flex items-center justify-between hover:shadow-2xl transition min-h-[100px]"
+              className="cursor-pointer bg-gradient-to-br from-gray-800 to-gray-900 p-6 rounded-3xl shadow-lg flex items-center justify-between hover:shadow-2xl transition min-h-[120px]"
             >
-              {/* Name + Icon */}
-              <h2 className="text-lg font-semibold flex items-center gap-4">
-                <span className="text-2xl">{lock.locked ? "🔒" : "🔓"}</span>
-                {lock.name}
-              </h2>
+              {/* Left: icon + name */}
+              <div className="flex items-center gap-4 flex-1 min-w-0">
+                <span className="text-2xl flex-shrink-0">{lock.locked ? "🔒" : "🔓"}</span>
+                <h2 className="text-lg font-semibold truncate">{lock.name}</h2>
+              </div>
 
-              {/* Locked/Unlocked Badge */}
+              {/* Right: Fixed badge */}
               <span
-                className={`px-6 py-2 text-sm rounded-full min-w-[90px] text-center ${
+                className={`px-6 py-2 text-sm rounded-full w-28 text-center flex-shrink-0 ml-4 ${
                   lock.locked ? "bg-green-600" : "bg-red-600"
                 }`}
               >
@@ -47,7 +46,6 @@ const LocksPage = () => {
           ))}
         </div>
       </main>
-
     </div>
   );
 };
