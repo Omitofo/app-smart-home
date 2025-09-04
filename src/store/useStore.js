@@ -111,6 +111,11 @@ toggleSetting: (id) =>
         { id: 1, name: "Front Door", locked: true },
         { id: 2, name: "Back Door", locked: false },
         { id: 3, name: "Garage Door", locked: true },
+        { id: 4, name: "2nd Floor Door", locked: true },
+        { id: 5, name: "Kids Room", locked: true },
+        { id: 6, name: "Basement Door", locked: false },
+        { id: 7, name: "Patio Door", locked: true },
+        { id: 8, name: "Office Door", locked: false },
       ],
       toggleLock: (id) =>
         set((state) => ({
