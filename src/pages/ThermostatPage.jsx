@@ -32,16 +32,22 @@ const ThermostatPage = () => {
 
         <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {zones.map((zone) => {
-            const icon = getIconByTemp(zone.temp); // icon updates dynamically
+            const icon = getIconByTemp(zone.temp);
             return (
               <div
                 key={zone.id}
                 className={`bg-gradient-to-br from-gray-800 to-gray-900 p-6 rounded-3xl shadow-xl transition hover:shadow-2xl flex flex-col items-center
                   ${!zone.active ? "opacity-50" : ""}`}
               >
-                <h2 className="text-xl font-semibold mb-2">{zone.name}</h2>
+                {/* Title clickable for toggle */}
+                <h2
+                  className="text-xl font-semibold mb-2 cursor-pointer select-none"
+                  onClick={() => toggleZone(zone.id)}
+                >
+                  {zone.name}
+                </h2>
 
-                {/* Toggle */}
+                {/* Toggle Switch */}
                 <label className="relative inline-flex items-center cursor-pointer mb-4">
                   <input
                     type="checkbox"
@@ -53,13 +59,13 @@ const ThermostatPage = () => {
                   <div className="absolute left-1 top-1 w-5 h-5 bg-white rounded-full shadow-md transition-all peer-checked:translate-x-7"></div>
                 </label>
 
-                {/* Icon y Temperatura */}
+                {/* Icon and Temperature */}
                 <div className="text-center mb-4">
                   <div className="text-6xl mb-2">{icon}</div>
                   <div className="text-3xl font-bold">{zone.temp}°C</div>
                 </div>
 
-                {/* Selector de Modo */}
+                {/* Mode Selector */}
                 <div className="mb-4 w-full">
                   <label className="block mb-1 text-sm text-gray-300">Mode</label>
                   <select
@@ -74,7 +80,7 @@ const ThermostatPage = () => {
                   </select>
                 </div>
 
-                {/* Slider de Temperatura */}
+                {/* Temperature Slider */}
                 <div className="w-full">
                   <label className="block mb-1 text-sm text-gray-300">Temperature</label>
                   <input
