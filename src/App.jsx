@@ -1,6 +1,7 @@
 import { Routes, Route, Outlet } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import ScrollToTop from "./components/ScrollToTop";
 
 import HomePage from "./pages/HomePage";
 import DevicesPage from "./pages/DevicesPage";
@@ -15,12 +16,12 @@ import HelpPage from "./pages/HelpPage";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
 import TermsOfServicePage from "./pages/TermsOfServicePage";
 
-// Layout that wraps all pages with Header + Footer
+// Layout que envuelve todas las páginas con Header + Footer
 const Layout = () => (
   <div className="flex flex-col min-h-screen bg-gray-900 text-white">
     <Header />
     <main className="flex-grow p-4">
-      <Outlet /> {/* Aqui se renderiza la pagina */}
+      <Outlet /> {/* Aquí se renderiza la página */}
     </main>
     <Footer />
   </div>
@@ -28,23 +29,25 @@ const Layout = () => (
 
 const App = () => {
   return (
-    <Routes>
-      {/* Layout wrapper */}
-      <Route path="/" element={<Layout />}>
-        <Route index element={<HomePage />} />
-        <Route path="devices" element={<DevicesPage />} />
-        <Route path="devices/lights" element={<LightsPage />} />
-        <Route path="devices/thermostat" element={<ThermostatPage />} />
-        <Route path="devices/cameras" element={<CamerasPage />} />
-        <Route path="devices/speakers" element={<SpeakersPage />} />
-        <Route path="devices/locks" element={<LocksPage />} />
-        <Route path="reports" element={<ReportsPage />} />
-        <Route path="settings" element={<SettingsPage />} />
-        <Route path="help" element={<HelpPage />} />
-        <Route path="privacy" element={<PrivacyPolicyPage />} />
-        <Route path="terms" element={<TermsOfServicePage />} />
-      </Route>
-    </Routes>
+    <>
+      <ScrollToTop />
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<HomePage />} />
+          <Route path="devices" element={<DevicesPage />} />
+          <Route path="devices/lights" element={<LightsPage />} />
+          <Route path="devices/thermostat" element={<ThermostatPage />} />
+          <Route path="devices/cameras" element={<CamerasPage />} />
+          <Route path="devices/speakers" element={<SpeakersPage />} />
+          <Route path="devices/locks" element={<LocksPage />} />
+          <Route path="reports" element={<ReportsPage />} />
+          <Route path="settings" element={<SettingsPage />} />
+          <Route path="help" element={<HelpPage />} />
+          <Route path="privacy" element={<PrivacyPolicyPage />} />
+          <Route path="terms" element={<TermsOfServicePage />} />
+        </Route>
+      </Routes>
+    </>
   );
 };
 
