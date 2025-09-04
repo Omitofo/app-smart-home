@@ -6,8 +6,8 @@ const Header = () => {
 
   return (
     <>
-      {/* Top Header */}
-      <header className="flex justify-between items-center p-4 shadow-md bg-gray-900 text-white relative z-20">
+      {/* Top Header - sticky */}
+      <header className="flex justify-between items-center p-4 shadow-md bg-gray-900 text-white fixed top-0 left-0 w-full z-30">
         <button
           className="text-2xl focus:outline-none"
           onClick={() => setIsOpen(true)}
@@ -16,28 +16,31 @@ const Header = () => {
         </button>
 
         {/* SmartHome Logo that links to Home */}
-        <Link to="/" className="font-bold text-lg hover:text-green-400 transition-colors">
+        <Link
+          to="/"
+          className="font-bold text-lg hover:text-green-400 transition-colors"
+        >
           SmartHome
         </Link>
 
         <Link to="/settings">⚙️</Link>
       </header>
 
-      {/* Overlay */}
+      {/* Overlay for sidebar */}
       {isOpen && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-50 z-10"
+          className="fixed inset-0 bg-black bg-opacity-50 z-20"
           onClick={() => setIsOpen(false)}
         />
       )}
 
       {/* Sidebar Menu */}
       <aside
-        className={`fixed top-0 left-0 h-full w-64 bg-gray-800 text-white shadow-lg z-20 transform transition-transform duration-300 ${
+        className={`fixed top-0 left-0 h-full w-64 bg-gray-800 text-white shadow-lg z-30 transform transition-transform duration-300 ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
-        {/* Header inside menu */}
+        {/* Sidebar Header */}
         <div className="flex justify-between items-center p-4 border-b border-gray-700">
           <h2 className="text-lg font-bold">Menu</h2>
           <button onClick={() => setIsOpen(false)} className="text-2xl">
@@ -45,7 +48,7 @@ const Header = () => {
           </button>
         </div>
 
-        {/* Navigation links */}
+        {/* Navigation Links */}
         <nav className="flex flex-col p-4 space-y-4">
           <Link
             to="/"
@@ -112,6 +115,9 @@ const Header = () => {
           </Link>
         </nav>
       </aside>
+
+      {/* Spacer so page content doesn't go under header */}
+      <div className="h-16" />
     </>
   );
 };
