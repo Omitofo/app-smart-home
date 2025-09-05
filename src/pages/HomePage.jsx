@@ -27,13 +27,13 @@ const HomePage = () => {
 
   return (
     <div className="flex flex-col min-h-screen bg-gray-900 text-white">
-      <main className="flex-grow px-4 py-8 max-w-7xl mx-auto">
+      <main className="flex-grow px-4 py-12 max-w-7xl mx-auto space-y-16">
         <Hero />
 
         {/* Features */}
-        <section id="features" className="mt-16">
-          <h2 className="text-3xl font-bold text-center mb-4">App Features</h2>
-          <p className="text-center text-gray-400 mb-10">
+        <section id="features" className="mx-auto max-w-4xl">
+          <h2 className="text-2xl font-bold text-center mb-4">App Features</h2>
+          <p className="text-center text-gray-400 mb-8 text-sm">
             Control various smart home devices with just one app
           </p>
           <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
@@ -43,9 +43,8 @@ const HomePage = () => {
           </div>
         </section>
 
-
         {/* Contact Us */}
-        <section id="contact" className="mt-16">
+        <section id="contact" className="mx-auto max-w-3xl">
           <ContactUs />
         </section>
       </main>

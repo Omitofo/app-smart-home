@@ -16,19 +16,20 @@ const SettingsPage = () => {
           {settings.map((setting) => (
             <div
               key={setting.id}
-              className={`flex items-center justify-between p-6 rounded-2xl shadow-lg transition-all hover:shadow-2xl
+              className={`flex items-center justify-between p-6 rounded-2xl shadow-lg transition-all hover:shadow-2xl cursor-pointer
                 ${setting.enabled ? "bg-gradient-to-r from-green-500 to-green-600" : "bg-gray-800"}
               `}
+              onClick={() => toggleSetting(setting.id)}
             >
               {/* Texto adaptable */}
               <span className="text-lg font-medium flex-1 break-words">
                 {setting.name}
               </span>
               <button
-                onClick={() => toggleSetting(setting.id)}
                 className={`ml-4 px-6 py-2 rounded-full font-semibold transition
                   ${setting.enabled ? "bg-white text-green-600" : "bg-gray-600 text-gray-200"}
                 `}
+                onClick={(e) => e.stopPropagation()} // prevenir doble toggle
               >
                 {setting.enabled ? "ON" : "OFF"}
               </button>

@@ -39,11 +39,14 @@ const LightsPage = () => {
                 onClick={() => toggleLight(light.id)}
               >
                 <h2 className="text-xl font-semibold mb-2">{light.room}</h2>
-                <label className="relative inline-flex items-center cursor-pointer">
+                <label
+                  className="relative inline-flex items-center cursor-pointer"
+                  onClick={(e) => e.stopPropagation()} // evitar doble toggle
+                >
                   <input
                     type="checkbox"
                     checked={light.status}
-                    readOnly
+                    onChange={() => toggleLight(light.id)} // toggle en switch
                     className="sr-only peer"
                   />
                   <div className="w-16 h-8 bg-gray-700 rounded-full peer-checked:bg-green-500 transition-all"></div>
@@ -61,7 +64,9 @@ const LightsPage = () => {
                   min="0"
                   max="100"
                   value={light.brightness}
-                  onChange={(e) => setLightBrightness(light.id, e.target.value)}
+                  onChange={(e) =>
+                    setLightBrightness(light.id, e.target.value)
+                  }
                   className="w-full accent-yellow-400"
                 />
               </div>
