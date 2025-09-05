@@ -19,35 +19,36 @@ const CamerasPage = () => {
   const [focusedCamera, setFocusedCamera] = useState(null);
   const [settingsCamera, setSettingsCamera] = useState(null);
 
-  // Local settings state for mock toggles
   const [motionSettings, setMotionSettings] = useState({});
   const [notificationSettings, setNotificationSettings] = useState({});
 
   const handleToggleMotion = (camId) => {
     setMotionSettings((prev) => ({ ...prev, [camId]: !prev[camId] }));
   };
-
   const handleToggleNotification = (camId) => {
     setNotificationSettings((prev) => ({ ...prev, [camId]: !prev[camId] }));
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-gray-900 text-white px-4 py-8">
-      <main className="flex-grow max-w-7xl mx-auto">
-        <h1 className="text-5xl font-bold mb-6 text-center text-cyan-400 tracking-wide">
-          Security Cameras
-        </h1>
-        <p className="text-center text-gray-400 mb-12">
-          Monitor your home in real time
-        </p>
+    <div className="flex flex-col min-h-screen bg-gray-900 text-white px-4 py-12">
+      <main className="flex-grow max-w-7xl mx-auto space-y-12">
 
+        {/* Title */}
+        <div className="text-center">
+          <h1 className="font-bold mb-2 text-[clamp(2rem,5vw,3rem)]">Security Cameras</h1>
+          <p className="text-gray-400 text-[clamp(0.875rem,2.5vw,1rem)]">
+            Monitor your home in real time
+          </p>
+        </div>
+
+        {/* Cameras Grid */}
         <div className="flex flex-wrap justify-center gap-8">
           {cameras.map((cam) => (
             <div
               key={cam.id}
               className="relative flex-shrink-0 w-72 sm:w-80 md:w-96 bg-gradient-to-br from-gray-800 to-gray-900 rounded-3xl shadow-xl hover:shadow-2xl transition p-6 flex flex-col items-center"
             >
-              {/* MIC button */}
+              {/* Mic */}
               <button
                 onClick={() => toggleMic(cam.id)}
                 className={`absolute top-4 right-4 text-2xl transition-opacity ${
@@ -57,16 +58,16 @@ const CamerasPage = () => {
                 <FiMic />
               </button>
 
-              {/* Camera Name - toggle on click */}
+              {/* Camera Name */}
               <h2
                 onClick={() => toggleCamera(cam.id)}
-                className="text-2xl font-semibold mb-6 cursor-pointer select-none"
+                className="text-[clamp(1.25rem,3vw,1.5rem)] font-semibold mb-4 cursor-pointer select-none text-center"
               >
                 {cam.name}
               </h2>
 
-              {/* Modern Toggle */}
-              <label className="relative inline-flex items-center cursor-pointer mb-6">
+              {/* Toggle */}
+              <label className="relative inline-flex items-center cursor-pointer mb-4">
                 <input
                   type="checkbox"
                   checked={cam.status}
@@ -77,7 +78,7 @@ const CamerasPage = () => {
                 <div className="absolute left-0.5 top-0.5 w-6 h-6 bg-white rounded-full shadow-md transition-transform duration-300 peer-checked:translate-x-7"></div>
               </label>
 
-              {/* Fake Camera Feed / Placeholder */}
+              {/* Camera Feed */}
               <div className="mt-4 w-full h-60 bg-black rounded-xl flex items-center justify-center text-gray-500 font-mono overflow-hidden">
                 {cam.status ? (
                   <img
@@ -92,15 +93,9 @@ const CamerasPage = () => {
 
               {/* Control Bar */}
               <div className="flex justify-center gap-4 mt-4 text-xl">
-                <button className="p-2 rounded-full hover:bg-gray-700 transition">
-                  <FiRewind />
-                </button>
-                <button className="p-2 rounded-full hover:bg-gray-700 transition">
-                  <FiPlay />
-                </button>
-                <button className="p-2 rounded-full hover:bg-gray-700 transition">
-                  <FiPause />
-                </button>
+                <button className="p-2 rounded-full hover:bg-gray-700 transition"><FiRewind /></button>
+                <button className="p-2 rounded-full hover:bg-gray-700 transition"><FiPlay /></button>
+                <button className="p-2 rounded-full hover:bg-gray-700 transition"><FiPause /></button>
                 <button
                   onClick={() => setSettingsCamera(cam)}
                   className="p-2 rounded-full hover:bg-gray-700 transition"
@@ -109,7 +104,7 @@ const CamerasPage = () => {
                 </button>
               </div>
 
-              {/* Maximize / Focus button */}
+              {/* Maximize */}
               <button
                 onClick={() => setFocusedCamera(cam)}
                 className="absolute bottom-4 right-4 text-white bg-gray-700 p-1 rounded-full hover:bg-gray-600 transition"
@@ -131,11 +126,9 @@ const CamerasPage = () => {
               >
                 <FiX size={24} />
               </button>
-
-              <h2 className="text-3xl font-bold text-center mt-6 mb-4">
+              <h2 className="text-[clamp(1.5rem,4vw,2rem)] font-bold text-center mt-6 mb-4">
                 {focusedCamera.name}
               </h2>
-
               <div className="flex-1 bg-black rounded-xl overflow-hidden m-6 flex items-center justify-center">
                 {focusedCamera.status ? (
                   <img
@@ -144,21 +137,15 @@ const CamerasPage = () => {
                     className="w-full h-full object-cover"
                   />
                 ) : (
-                  <span className="text-gray-400 text-xl">Camera Off</span>
+                  <span className="text-gray-400 text-[clamp(0.875rem,2.5vw,1rem)]">Camera Off</span>
                 )}
               </div>
 
-              {/* Modal Control Bar */}
+              {/* Modal Controls */}
               <div className="flex justify-center gap-6 mb-6 text-2xl">
-                <button className="p-3 rounded-full hover:bg-gray-700 transition">
-                  <FiRewind />
-                </button>
-                <button className="p-3 rounded-full hover:bg-gray-700 transition">
-                  <FiPlay />
-                </button>
-                <button className="p-3 rounded-full hover:bg-gray-700 transition">
-                  <FiPause />
-                </button>
+                <button className="p-3 rounded-full hover:bg-gray-700 transition"><FiRewind /></button>
+                <button className="p-3 rounded-full hover:bg-gray-700 transition"><FiPlay /></button>
+                <button className="p-3 rounded-full hover:bg-gray-700 transition"><FiPause /></button>
                 <button
                   onClick={() => setSettingsCamera(focusedCamera)}
                   className="p-3 rounded-full hover:bg-gray-700 transition"
@@ -181,10 +168,11 @@ const CamerasPage = () => {
                 <FiX size={20} />
               </button>
 
-              <h2 className="text-2xl font-bold mb-4 text-center">{settingsCamera.name} Settings</h2>
+              <h2 className="text-[clamp(1.25rem,3vw,1.5rem)] font-bold mb-4 text-center">
+                {settingsCamera.name} Settings
+              </h2>
 
-              {/* Mock settings content */}
-              <div className="flex flex-col gap-4">
+              <div className="flex flex-col gap-4 text-[clamp(0.875rem,2.5vw,1rem)]">
                 <div className="flex justify-between items-center">
                   <span>Recording Quality</span>
                   <select className="bg-gray-700 text-white rounded px-2 py-1">
@@ -229,6 +217,7 @@ const CamerasPage = () => {
             </div>
           </div>
         )}
+
       </main>
     </div>
   );
