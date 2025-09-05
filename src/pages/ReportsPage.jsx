@@ -13,7 +13,7 @@ const ReportsPage = () => {
   return (
     <div className="flex flex-col min-h-screen bg-futuristic-dark text-futuristic-green">
       <main className="flex-grow p-4 sm:p-6 max-w-7xl mx-auto">
-        <h2 className="text-3xl font-bold mb-6 text-center text-futuristic-green">
+        <h2 className="text-3xl font-bold mb-6 text-center text-white">
           Smart Home Usage Reports
         </h2>
 

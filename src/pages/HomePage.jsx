@@ -26,7 +26,7 @@ const HomePage = () => {
 
         {/* Features */}
         <section id="features" className="mx-auto max-w-4xl">
-          <h2 className="text-2xl font-bold text-center mb-4">App Features</h2>
+          <h2 className="text-2xl font-bold text-white text-center mb-4">App Features</h2>
           <p className="text-center text-gray-400 mb-8 text-sm">
             Control various smart home devices with just one app
           </p>

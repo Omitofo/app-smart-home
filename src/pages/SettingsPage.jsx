@@ -6,7 +6,7 @@ const SettingsPage = () => {
 
   return (
     <div className="flex flex-col min-h-screen bg-futuristic-dark text-futuristic-green p-6">
-      <h1 className="text-3xl font-bold mb-6 text-center">Settings</h1>
+      <h1 className="text-3xl font-bold mb-6 text-white text-center">Settings</h1>
 
       {/* Container with max width */}
       <div className="mx-auto max-w-5xl">

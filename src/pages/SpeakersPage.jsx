@@ -10,7 +10,7 @@ const SpeakersPage = () => {
   return (
     <div className="flex flex-col min-h-screen bg-futuristic-dark text-futuristic-green px-4 py-8">
       <main className="flex-grow max-w-6xl mx-auto">
-        <h1 className="text-4xl font-bold mb-4 text-center">Speakers Control</h1>
+        <h1 className="text-4xl font-bold mb-4 text-white text-center">Speakers Control</h1>
         <p className="text-center text-gray-400 mb-10">
           Click the icon, room name, or status badge to toggle ON/OFF. Adjust volume for active speakers.
         </p>

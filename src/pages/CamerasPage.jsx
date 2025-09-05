@@ -35,7 +35,7 @@ const CamerasPage = () => {
 
         {/* Title */}
         <div className="text-center">
-          <h1 className="font-bold mb-2 text-[clamp(2rem,5vw,3rem)]">Security Cameras</h1>
+          <h1 className="font-bold mb-2 text-white text-[clamp(2rem,5vw,3rem)]">Security Cameras</h1>
           <p className="text-gray-400 text-[clamp(0.875rem,2.5vw,1rem)]">
             Monitor your home in real time
           </p>

@@ -29,7 +29,7 @@ const AboutUsSection = () => {
   return (
     <section id="about" className="bg-homepage-black py-16 rounded-3xl">
       <div className="mx-auto max-w-6xl text-center px-6">
-        <h2 className="text-4xl font-bold mb-8 text-white">About Us</h2>
+        <h2 className="text-2xl font-bold mb-4 text-white">About Us</h2>
 
         {/* Tabs */}
         <div className="flex justify-center gap-4 mb-12 flex-wrap">

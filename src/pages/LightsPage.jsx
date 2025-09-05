@@ -11,7 +11,7 @@ const LightsPage = () => {
   return (
     <div className="flex flex-col min-h-screen bg-futuristic-dark text-futuristic-green px-4 py-8">
       <main className="flex-grow max-w-6xl mx-auto">
-        <h1 className="text-4xl font-bold mb-2 text-center">Lights Control</h1>
+        <h1 className="text-4xl font-bold mb-2  text-white text-center">Lights Control</h1>
         <p className="text-center text-gray-400 mb-2">Manage all the lights in your home</p>
         <p
           className={`text-center mb-6 font-medium ${
