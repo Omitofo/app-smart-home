@@ -26,22 +26,26 @@ const LocksPage = () => {
             <div
               key={lock.id}
               onClick={() => toggleLock(lock.id)}
-              className="cursor-pointer bg-gradient-to-br from-gray-800 to-gray-900 p-6 rounded-3xl shadow-lg flex items-center justify-between hover:shadow-2xl transition min-h-[120px]"
+              className="cursor-pointer bg-gradient-to-br from-gray-800 to-gray-900 p-6 rounded-3xl shadow-lg hover:shadow-2xl transition min-h-[120px] flex flex-col items-center justify-between text-center"
             >
-              {/* Left: icon + name */}
-              <div className="flex items-center gap-4 flex-1 min-w-0">
-                <span className="text-2xl flex-shrink-0">{lock.locked ? "🔒" : "🔓"}</span>
-                <h2 className="text-lg font-semibold truncate">{lock.name}</h2>
-              </div>
+              {/* Title */}
+              <h2 className="text-lg font-semibold mb-4">{lock.name}</h2>
 
-              {/* Right: Fixed badge */}
-              <span
-                className={`px-6 py-2 text-sm rounded-full w-28 text-center flex-shrink-0 ml-4 ${
-                  lock.locked ? "bg-green-600" : "bg-red-600"
-                }`}
-              >
-                {lock.locked ? "Locked" : "Unlocked"}
-              </span>
+              {/* Bottom container: icon + badge */}
+              <div className="flex flex-col items-center mt-auto">
+                {/* Lock icon */}
+                <span className="text-3xl mb-2">{lock.locked ? "🔒" : "🔓"}</span>
+
+                {/* Badge */}
+                <span
+                  className={`px-6 py-2 text-sm rounded-full text-center`}
+                  style={{
+                    backgroundColor: lock.locked ? "#16a34a" : "#dc2626",
+                  }}
+                >
+                  {lock.locked ? "Locked" : "Unlocked"}
+                </span>
+              </div>
             </div>
           ))}
         </div>
