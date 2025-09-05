@@ -1,13 +1,24 @@
+import heroPhone from "../assets/roboto4.jpg";
+
 const Hero = () => (
-  <section className="text-center py-12 px-4 bg-gray-800 text-white">
-    <h1 className="text-4xl font-bold mb-4">Manage Your Home with Smart Home App</h1>
-    <p className="text-lg mb-6">Control your smart home devices and optimize energy usage with our intuitive app.</p>
-    <button className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-6 rounded-full">Get Started</button>
-    <div className="mt-8">
-      {/* Aquí iría la ilustración del mockup del teléfono */}
-      <div className="h-64 w-48 mx-auto bg-gray-700 rounded-lg flex items-center justify-center">
-        <span>Mockup Phone</span>
-      </div>
+  <section
+    className="relative h-[500px] w-full bg-cover bg-center rounded-3xl overflow-hidden"
+    style={{ backgroundImage: `url(${heroPhone})` }}
+  >
+    {/* Dark overlay for better text contrast */}
+    <div className="absolute inset-0 bg-black bg-opacity-20"></div>
+
+    {/* Text container with padding from edges */}
+    <div className="absolute left-8 bottom-8 text-white max-w-xs">
+      <h1 className="text-3xl font-bold mb-3 leading-snug">
+        Manage Your Home with Smart Home App
+      </h1>
+      <p className="text-sm mb-3 max-w-[25rem]">
+        Control your smart home devices and optimize energy usage with our intuitive app.
+      </p>
+      <button className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-5 rounded-full w-fit text-sm">
+        Get Started
+      </button>
     </div>
   </section>
 );
