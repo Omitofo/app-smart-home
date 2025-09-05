@@ -8,14 +8,27 @@ const Header = () => {
 
   const goToContact = () => {
     if (location.pathname === "/") {
-      // Already on home, scroll to contact
       const element = document.getElementById("contact");
-      if (element) element.scrollIntoView({ behavior: "smooth" });
+      if (element) {
+        const headerOffset = 64;
+        const extraSpacing = 20;
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition =
+          elementPosition + window.scrollY - headerOffset - extraSpacing;
+        window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+      }
     } else {
-      // Navigate to home with hash
       navigate("/#contact");
     }
-    setIsOpen(false); // close sidebar
+    setIsOpen(false);
+  };
+
+  const handleLogoClick = (e) => {
+    if (location.pathname === "/") {
+      e.preventDefault(); // evitar recargar la misma página
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+    setIsOpen(false);
   };
 
   return (
@@ -32,6 +45,7 @@ const Header = () => {
         {/* Logo */}
         <Link
           to="/"
+          onClick={handleLogoClick}
           className="font-bold text-lg hover:text-green-400 transition-colors"
         >
           SmartHome
