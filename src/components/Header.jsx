@@ -147,6 +147,15 @@ const Header = () => {
           >
             📩 Contact Us
           </button>
+
+          {/* NUEVO LINK PARA ABOUT US */}
+          <Link
+            to="/about"
+            onClick={() => setIsOpen(false)}
+            className="hover:text-green-400 transition-colors"
+          >
+            📝 About Us
+          </Link>
         </nav>
       </aside>
 

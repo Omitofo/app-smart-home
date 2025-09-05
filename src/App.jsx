@@ -15,6 +15,7 @@ import CamerasPage from "./pages/CamerasPage";
 import HelpPage from "./pages/HelpPage";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
 import TermsOfServicePage from "./pages/TermsOfServicePage";
+import AboutUsPage from "./pages/AboutUs"; // <-- NUEVA RUTA
 
 // Layout que envuelve todas las páginas con Header + Footer
 const Layout = () => (
@@ -45,6 +46,7 @@ const App = () => {
           <Route path="help" element={<HelpPage />} />
           <Route path="privacy" element={<PrivacyPolicyPage />} />
           <Route path="terms" element={<TermsOfServicePage />} />
+          <Route path="about" element={<AboutUsPage />} /> {/* NUEVA RUTA */}
         </Route>
       </Routes>
     </>
