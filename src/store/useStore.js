@@ -4,10 +4,6 @@ import { persist } from "zustand/middleware";
 export const useStore = create(
   persist(
     (set) => ({
-      // Dark Mode
-      darkMode: true, // por defecto activo
-      toggleDarkMode: () => set((state) => ({ darkMode: !state.darkMode })),
-
       // Lights
       lights: [
         { id: 1, room: "Living Room", status: true, brightness: 80, color: "#FFD700" },
@@ -105,24 +101,20 @@ export const useStore = create(
           ),
         })),
 
-      // Settings
-      settings: [
+      // Settings (Dark Mode removed)
+          settings: [
         { id: 1, name: "Notifications", enabled: true },
-        { id: 2, name: "Dark Mode", enabled: true },
-        { id: 3, name: "Auto Updates", enabled: false },
-        { id: 4, name: "Energy Saver Mode", enabled: false },
-      ],
+        { id: 2, name: "Auto Updates", enabled: false },
+        { id: 3, name: "Energy Saver Mode", enabled: false },
+        { id: 4, name: "Silence Mode", enabled: false },
+        { id: 5, name: "Location Access", enabled: true },
+        { id: 6, name: "Voice Control", enabled: false },
+          ],
       toggleSetting: (id) =>
         set((state) => ({
           settings: state.settings.map((s) =>
-            s.id === id
-              ? {
-                  ...s,
-                  enabled: !s.enabled,
-                }
-              : s
+            s.id === id ? { ...s, enabled: !s.enabled } : s
           ),
-          darkMode: id === 2 ? !state.darkMode : state.darkMode, // si es Dark Mode, cambiar global
         })),
 
       // Locks
