@@ -33,7 +33,7 @@ const HelpPage = () => {
       {/* Hero */}
       <div className="text-center mb-12">
         <FiHelpCircle className="mx-auto text-futuristic-green text-6xl mb-4 animate-pulse" />
-        <h1 className="text-4xl font-bold mb-2">Need Help?</h1>
+        <h1 className="text-4xl text-white font-bold mb-2">Need Help?</h1>
         <p className="text-gray-400 max-w-2xl mx-auto">
           Browse common questions or reach out to our support team.
         </p>
@@ -41,7 +41,7 @@ const HelpPage = () => {
 
       {/* FAQs */}
       <section className="max-w-4xl mx-auto mb-16">
-        <h2 className="text-3xl font-semibold mb-6 text-center">Frequently Asked Questions</h2>
+        <h2 className="text-3xl font-semibold mb-6 text-white text-center">Frequently Asked Questions</h2>
         <div className="flex flex-col gap-4">
           {faqs.map((faq, index) => (
             <div
