@@ -12,9 +12,7 @@ const LightsPage = () => {
     <div className="flex flex-col min-h-screen bg-gray-900 text-white px-4 py-8">
       <main className="flex-grow max-w-6xl mx-auto">
         <h1 className="text-4xl font-bold mb-2 text-center">Lights Control</h1>
-        <p className="text-center text-gray-400 mb-2">
-          Manage all the lights in your home
-        </p>
+        <p className="text-center text-gray-400 mb-2">Manage all the lights in your home</p>
         <p
           className={`text-center mb-6 font-medium ${
             lightsOn === 0
@@ -32,12 +30,12 @@ const LightsPage = () => {
             <div
               key={light.id}
               className={`p-6 rounded-3xl shadow-lg transition flex flex-col items-center
-                ${light.status 
-                  ? "bg-gradient-to-br from-gray-800 to-gray-900 hover:shadow-2xl" 
-                  : "bg-gray-800 opacity-40 filter grayscale pointer-events-auto"}
+                ${light.status
+                  ? "bg-gradient-to-br from-gray-800 to-gray-900 hover:shadow-2xl"
+                  : "bg-gray-800 opacity-50"}
               `}
             >
-              {/* Title + Toggle together */}
+              {/* Title + Toggle */}
               <div
                 className="flex flex-col items-center cursor-pointer select-none mb-6"
                 onClick={() => toggleLight(light.id)}
@@ -45,12 +43,12 @@ const LightsPage = () => {
                 <h2 className="text-xl font-semibold mb-2">{light.room}</h2>
                 <label
                   className="relative inline-flex items-center cursor-pointer"
-                  onClick={(e) => e.stopPropagation()} // evitar doble toggle
+                  onClick={(e) => e.stopPropagation()}
                 >
                   <input
                     type="checkbox"
                     checked={light.status}
-                    onChange={() => toggleLight(light.id)} // toggle en switch
+                    onChange={() => toggleLight(light.id)}
                     className="sr-only peer"
                   />
                   <div className="w-16 h-8 bg-gray-700 rounded-full peer-checked:bg-green-500 transition-all"></div>
@@ -68,11 +66,9 @@ const LightsPage = () => {
                   min="0"
                   max="100"
                   value={light.brightness}
-                  onChange={(e) =>
-                    setLightBrightness(light.id, e.target.value)
-                  }
+                  onChange={(e) => setLightBrightness(light.id, e.target.value)}
                   className="w-full accent-yellow-400"
-                  disabled={!light.status} // deshabilitar slider si está apagada
+                  disabled={!light.status}
                 />
               </div>
             </div>
