@@ -31,7 +31,11 @@ const LightsPage = () => {
           {lights.map((light) => (
             <div
               key={light.id}
-              className="bg-gradient-to-br from-gray-800 to-gray-900 p-6 rounded-3xl shadow-lg hover:shadow-2xl transition flex flex-col items-center"
+              className={`p-6 rounded-3xl shadow-lg transition flex flex-col items-center
+                ${light.status 
+                  ? "bg-gradient-to-br from-gray-800 to-gray-900 hover:shadow-2xl" 
+                  : "bg-gray-800 opacity-40 filter grayscale pointer-events-auto"}
+              `}
             >
               {/* Title + Toggle together */}
               <div
@@ -68,6 +72,7 @@ const LightsPage = () => {
                     setLightBrightness(light.id, e.target.value)
                   }
                   className="w-full accent-yellow-400"
+                  disabled={!light.status} // deshabilitar slider si está apagada
                 />
               </div>
             </div>
