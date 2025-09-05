@@ -8,7 +8,7 @@ const SpeakersPage = () => {
   const CARD_HEIGHT = 250; // altura fija
 
   return (
-    <div className="flex flex-col min-h-screen bg-gray-900 text-white px-4 py-8">
+    <div className="flex flex-col min-h-screen bg-futuristic-dark text-futuristic-green px-4 py-8">
       <main className="flex-grow max-w-6xl mx-auto">
         <h1 className="text-4xl font-bold mb-4 text-center">Speakers Control</h1>
         <p className="text-center text-gray-400 mb-10">
@@ -19,7 +19,7 @@ const SpeakersPage = () => {
           {speakers.map((speaker) => (
             <div
               key={speaker.id}
-              className={`relative bg-gradient-to-br from-gray-800 to-gray-900 p-4 rounded-2xl shadow-lg flex flex-col items-center text-center
+              className={`relative bg-futuristic-gray p-4 rounded-2xl shadow-lg flex flex-col items-center text-center
                 transition-transform transform hover:-translate-y-1 hover:scale-105 hover:shadow-xl
                 ${!speaker.status ? "opacity-60" : ""}`}
               style={{ minHeight: `${CARD_HEIGHT}px`, flex: "0 1 220px" }}
@@ -38,7 +38,7 @@ const SpeakersPage = () => {
                 {/* Status Badge */}
                 <span
                   className={`mt-1 inline-block px-3 py-1 rounded-full text-sm ${
-                    speaker.status ? "bg-green-600" : "bg-red-600"
+                    speaker.status ? "bg-futuristic-green" : "bg-red-600"
                   }`}
                 >
                   {speaker.status ? "ON" : "OFF"}
@@ -51,7 +51,7 @@ const SpeakersPage = () => {
                   speaker.status ? "opacity-100" : "opacity-0"
                 }`}
               >
-                <label className="block mb-1 text-sm text-gray-300">
+                <label className="block mb-1 text-sm text-futuristic-green">
                   Volume: {speaker.volume}%
                 </label>
                 <input
@@ -61,7 +61,7 @@ const SpeakersPage = () => {
                   value={speaker.volume}
                   onClick={(e) => e.stopPropagation()} // prevent toggle
                   onChange={(e) => setSpeakerVolume(speaker.id, e.target.value)}
-                  className="w-full accent-blue-400"
+                  className="w-full accent-futuristic-green"
                 />
               </div>
             </div>

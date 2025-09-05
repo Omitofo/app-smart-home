@@ -19,7 +19,7 @@ import AboutUsPage from "./pages/AboutUs"; // <-- NUEVA RUTA
 
 // Layout que envuelve todas las páginas con Header + Footer
 const Layout = () => (
-  <div className="flex flex-col min-h-screen bg-gray-900 text-white">
+  <div className="flex flex-col min-h-screen bg-futuristic-dark text-white">
     <Header />
     <main className="flex-grow p-4">
       <Outlet />

@@ -1,17 +1,17 @@
 import { useStore } from "../store/useStore";
 
 const modes = {
-  Hielo: { temp: 16, icon: "🧊", color: "bg-blue-600" },
-  Frío: { temp: 18, icon: "❄️", color: "bg-blue-400" },
-  Normal: { temp: 22, icon: "🌡️", color: "bg-gray-500" },
-  Calor: { temp: 26, icon: "🔥", color: "bg-red-500" },
+  Hielo: { temp: 16, icon: "🧊" },
+  Frío: { temp: 18, icon: "❄️" },
+  Normal: { temp: 22, icon: "🌡️" },
+  Calor: { temp: 26, icon: "🔥" },
 };
 
 const getIconByTemp = (temp) => {
-  if (temp <= 16) return "🧊";      // Hielo
-  if (temp <= 18) return "❄️";      // Frío
-  if (temp <= 24) return "🌡️";      // Normal
-  return "🔥";                        // Calor
+  if (temp <= 16) return "🧊";
+  if (temp <= 18) return "❄️";
+  if (temp <= 24) return "🌡️";
+  return "🔥";
 };
 
 const ThermostatPage = () => {
@@ -25,7 +25,7 @@ const ThermostatPage = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-gray-900 text-white px-4 py-8">
+    <div className="flex flex-col min-h-screen bg-futuristic-dark text-futuristic-green px-4 py-8">
       <main className="flex-grow max-w-6xl mx-auto">
         <h1 className="text-4xl font-bold mb-4 text-center">Thermostat Control</h1>
         <p className="text-center text-gray-400 mb-10">Adjust temperatures by zone</p>
@@ -36,8 +36,8 @@ const ThermostatPage = () => {
             return (
               <div
                 key={zone.id}
-                className={`bg-gradient-to-br from-gray-800 to-gray-900 p-6 rounded-3xl shadow-xl transition hover:shadow-2xl flex flex-col items-center
-                  ${!zone.active ? "opacity-50" : ""}`}
+                className={`bg-futuristic-gray p-6 rounded-3xl shadow-xl transition hover:shadow-2xl flex flex-col items-center
+                  ${!zone.active ? "opacity-60" : ""}`}
               >
                 {/* Title clickable for toggle */}
                 <h2
@@ -55,7 +55,7 @@ const ThermostatPage = () => {
                     onChange={() => toggleZone(zone.id)}
                     className="sr-only peer"
                   />
-                  <div className="w-14 h-7 bg-gray-700 rounded-full peer peer-checked:bg-green-500 transition-all"></div>
+                  <div className="w-14 h-7 bg-gray-700 rounded-full peer-checked:bg-futuristic-green transition-all"></div>
                   <div className="absolute left-1 top-1 w-5 h-5 bg-white rounded-full shadow-md transition-all peer-checked:translate-x-7"></div>
                 </label>
 
@@ -67,11 +67,11 @@ const ThermostatPage = () => {
 
                 {/* Mode Selector */}
                 <div className="mb-4 w-full">
-                  <label className="block mb-1 text-sm text-gray-300">Mode</label>
+                  <label className="block mb-1 text-sm text-futuristic-green">Mode</label>
                   <select
                     value={zone.mode}
                     onChange={(e) => handleModeChange(zone.id, e.target.value)}
-                    className="bg-gray-700 px-4 py-2 rounded w-full"
+                    className="bg-futuristic-dark text-futuristic-green px-4 py-2 rounded w-full"
                     disabled={!zone.active}
                   >
                     {Object.keys(modes).map((m) => (
@@ -82,14 +82,14 @@ const ThermostatPage = () => {
 
                 {/* Temperature Slider */}
                 <div className="w-full">
-                  <label className="block mb-1 text-sm text-gray-300">Temperature</label>
+                  <label className="block mb-1 text-sm text-futuristic-green">Temperature</label>
                   <input
                     type="range"
                     min="16"
                     max="30"
                     value={zone.temp}
                     onChange={(e) => setZoneTemp(zone.id, Number(e.target.value))}
-                    className="w-full accent-yellow-400"
+                    className="w-full accent-futuristic-green"
                     disabled={!zone.active}
                   />
                 </div>

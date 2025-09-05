@@ -25,7 +25,7 @@ const Header = () => {
 
   const handleLogoClick = (e) => {
     if (location.pathname === "/") {
-      e.preventDefault(); // evitar recargar la misma página
+      e.preventDefault();
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
     setIsOpen(false);
@@ -34,7 +34,7 @@ const Header = () => {
   return (
     <>
       {/* Top Header - sticky */}
-      <header className="flex justify-between items-center p-4 shadow-md bg-gray-900 text-white fixed top-0 left-0 w-full z-30">
+      <header className="flex justify-between items-center p-4 shadow-md bg-futuristic-dark text-white fixed top-0 left-0 w-full z-30">
         <button
           className="text-2xl focus:outline-none"
           onClick={() => setIsOpen(true)}
@@ -46,7 +46,7 @@ const Header = () => {
         <Link
           to="/"
           onClick={handleLogoClick}
-          className="font-bold text-lg hover:text-green-400 transition-colors"
+          className="font-bold text-lg hover:text-futuristic-green transition-colors"
         >
           SmartHome
         </Link>
@@ -64,7 +64,7 @@ const Header = () => {
 
       {/* Sidebar */}
       <aside
-        className={`fixed top-0 left-0 h-full w-64 bg-gray-800 text-white shadow-lg z-30 transform transition-transform duration-300 ${
+        className={`fixed top-0 left-0 h-full w-64 bg-futuristic-gray text-white shadow-lg z-30 transform transition-transform duration-300 ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
@@ -81,78 +81,77 @@ const Header = () => {
           <Link
             to="/"
             onClick={() => setIsOpen(false)}
-            className="hover:text-green-400 transition-colors"
+            className="hover:text-futuristic-green transition-colors"
           >
             🏠 Home
           </Link>
           <Link
             to="/devices"
             onClick={() => setIsOpen(false)}
-            className="hover:text-green-400 transition-colors"
+            className="hover:text-futuristic-green transition-colors"
           >
             💡 Devices
           </Link>
           <Link
             to="/devices/lights"
             onClick={() => setIsOpen(false)}
-            className="hover:text-green-400 transition-colors pl-6 text-sm"
+            className="hover:text-futuristic-green transition-colors pl-6 text-sm"
           >
             - Lights
           </Link>
           <Link
             to="/devices/thermostat"
             onClick={() => setIsOpen(false)}
-            className="hover:text-green-400 transition-colors pl-6 text-sm"
+            className="hover:text-futuristic-green transition-colors pl-6 text-sm"
           >
             - Thermostat
           </Link>
           <Link
             to="/devices/cameras"
             onClick={() => setIsOpen(false)}
-            className="hover:text-green-400 transition-colors pl-6 text-sm"
+            className="hover:text-futuristic-green transition-colors pl-6 text-sm"
           >
             - Cameras
           </Link>
           <Link
             to="/devices/speakers"
             onClick={() => setIsOpen(false)}
-            className="hover:text-green-400 transition-colors pl-6 text-sm"
+            className="hover:text-futuristic-green transition-colors pl-6 text-sm"
           >
             - Speakers
           </Link>
           <Link
             to="/devices/locks"
             onClick={() => setIsOpen(false)}
-            className="hover:text-green-400 transition-colors pl-6 text-sm"
+            className="hover:text-futuristic-green transition-colors pl-6 text-sm"
           >
             - Locks
           </Link>
           <Link
             to="/reports"
             onClick={() => setIsOpen(false)}
-            className="hover:text-green-400 transition-colors"
+            className="hover:text-futuristic-green transition-colors"
           >
             📊 Reports
           </Link>
           <Link
             to="/settings"
             onClick={() => setIsOpen(false)}
-            className="hover:text-green-400 transition-colors"
+            className="hover:text-futuristic-green transition-colors"
           >
             ⚙️ Settings
           </Link>
           <button
             onClick={goToContact}
-            className="hover:text-green-400 transition-colors text-left"
+            className="hover:text-futuristic-green transition-colors text-left"
           >
             📩 Contact Us
           </button>
 
-          {/* NUEVO LINK PARA ABOUT US */}
           <Link
             to="/about"
             onClick={() => setIsOpen(false)}
-            className="hover:text-green-400 transition-colors"
+            className="hover:text-futuristic-green transition-colors"
           >
             📝 About Us
           </Link>

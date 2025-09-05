@@ -18,7 +18,7 @@ const typeIcons = {
 };
 
 const DevicesPage = () => (
-  <div className="flex flex-col min-h-screen bg-gray-900 text-white px-4 py-8">
+  <div className="flex flex-col min-h-screen bg-futuristic-dark text-futuristic-green px-4 py-8">
     {/* Title */}
     <div className="text-center mb-12">
       <h1 className="text-[clamp(1.5rem,4vw,2.25rem)] font-bold mb-1">
@@ -35,10 +35,10 @@ const DevicesPage = () => (
         <Link
           key={device.id}
           to={device.route}
-          className="group bg-gradient-to-br from-gray-800 to-gray-900 p-6 rounded-2xl shadow-lg flex flex-col items-center text-center transition hover:-translate-y-1 hover:scale-105 min-w-[150px] max-w-[200px] flex-1"
+          className="group bg-futuristic-gray p-6 rounded-2xl shadow-lg flex flex-col items-center text-center transition hover:-translate-y-1 hover:scale-105 min-w-[150px] max-w-[200px] flex-1"
         >
           <div className="text-[clamp(2rem,5vw,3rem)] mb-3">{typeIcons[device.type]}</div>
-          <h2 className="font-semibold text-[clamp(0.875rem,2.5vw,1rem)] truncate">
+          <h2 className="font-semibold text-futuristic-green text-[clamp(0.875rem,2.5vw,1rem)] truncate">
             {device.name}
           </h2>
         </Link>
@@ -50,7 +50,7 @@ const DevicesPage = () => (
       className="mx-auto w-full max-w-[800px] rounded-2xl shadow-lg bg-cover bg-center min-h-[300px] md:min-h-[250px] relative"
       style={{ backgroundImage: `url(${bottomRightImg})` }}
     >
-      <div className="w-full h-full bg-black/20 rounded-2xl"></div>
+      <div className="w-full h-full bg-black/40 rounded-2xl"></div>
     </div>
   </div>
 );

@@ -4,6 +4,10 @@ import { persist } from "zustand/middleware";
 export const useStore = create(
   persist(
     (set) => ({
+      // Dark Mode
+      darkMode: true, // por defecto activo
+      toggleDarkMode: () => set((state) => ({ darkMode: !state.darkMode })),
+
       // Lights
       lights: [
         { id: 1, room: "Living Room", status: true, brightness: 80, color: "#FFD700" },
@@ -77,40 +81,50 @@ export const useStore = create(
             c.id === id ? { ...c, mic: !c.mic } : c
           ),
         })),
-        // Speakers
-speakers: [
-  { id: 1, room: "Living Room", status: true, volume: 70 },
-  { id: 2, room: "Kitchen", status: false, volume: 0 },
-  { id: 3, room: "Master Bedroom", status: false, volume: 0 },
-  { id: 4, room: "Family Room", status: false, volume: 0 },
-  { id: 5, room: "Office", status: false, volume: 0 },
-  { id: 6, room: "Patio", status: false, volume: 0 },
-  { id: 7, room: "Garage", status: false, volume: 0 },
-],
-toggleSpeaker: (id) =>
-  set((state) => ({
-    speakers: state.speakers.map((s) =>
-      s.id === id ? { ...s, status: !s.status } : s
-    ),
-  })),
-setSpeakerVolume: (id, value) =>
-  set((state) => ({
-    speakers: state.speakers.map((s) =>
-      s.id === id ? { ...s, volume: Number(value) } : s
-    ),
-  })),
-        settings: [
-  { id: 1, name: "Notifications", enabled: true },
-  { id: 2, name: "Dark Mode", enabled: true },
-  { id: 3, name: "Auto Updates", enabled: false },
-  { id: 4, name: "Energy Saver Mode", enabled: false },
-],
-toggleSetting: (id) =>
-  set((state) => ({
-    settings: state.settings.map((s) =>
-      s.id === id ? { ...s, enabled: !s.enabled } : s
-    ),
-  })),
+
+      // Speakers
+      speakers: [
+        { id: 1, room: "Living Room", status: true, volume: 70 },
+        { id: 2, room: "Kitchen", status: false, volume: 0 },
+        { id: 3, room: "Master Bedroom", status: false, volume: 0 },
+        { id: 4, room: "Family Room", status: false, volume: 0 },
+        { id: 5, room: "Office", status: false, volume: 0 },
+        { id: 6, room: "Patio", status: false, volume: 0 },
+        { id: 7, room: "Garage", status: false, volume: 0 },
+      ],
+      toggleSpeaker: (id) =>
+        set((state) => ({
+          speakers: state.speakers.map((s) =>
+            s.id === id ? { ...s, status: !s.status } : s
+          ),
+        })),
+      setSpeakerVolume: (id, value) =>
+        set((state) => ({
+          speakers: state.speakers.map((s) =>
+            s.id === id ? { ...s, volume: Number(value) } : s
+          ),
+        })),
+
+      // Settings
+      settings: [
+        { id: 1, name: "Notifications", enabled: true },
+        { id: 2, name: "Dark Mode", enabled: true },
+        { id: 3, name: "Auto Updates", enabled: false },
+        { id: 4, name: "Energy Saver Mode", enabled: false },
+      ],
+      toggleSetting: (id) =>
+        set((state) => ({
+          settings: state.settings.map((s) =>
+            s.id === id
+              ? {
+                  ...s,
+                  enabled: !s.enabled,
+                }
+              : s
+          ),
+          darkMode: id === 2 ? !state.darkMode : state.darkMode, // si es Dark Mode, cambiar global
+        })),
+
       // Locks
       locks: [
         { id: 1, name: "Front Door", locked: true },
@@ -129,9 +143,8 @@ toggleSetting: (id) =>
           ),
         })),
     }),
-    
     {
-      name: "smart-home-storage", // nombre en localStorage
+      name: "smart-home-storage",
     }
   )
 );
