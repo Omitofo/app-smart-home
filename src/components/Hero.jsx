@@ -5,22 +5,17 @@ const Hero = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-const goToContact = () => {
-  if (location.pathname === "/") {
-    const element = document.getElementById("contact");
+  const goToFeatures = () => {
+    const element = document.getElementById("features");
     if (element) {
       const headerOffset = 64; // height of sticky header
-      const extraSpacing = 20; // extra space above title
+      const extraSpacing = 20; // extra space above section
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition =
         elementPosition + window.scrollY - headerOffset - extraSpacing;
       window.scrollTo({ top: offsetPosition, behavior: "smooth" });
     }
-  } else {
-    navigate("/#contact");
-  }
-};
-
+  };
 
   return (
     <section
@@ -30,7 +25,7 @@ const goToContact = () => {
       {/* Dark overlay for better text contrast */}
       <div className="absolute inset-0 bg-black bg-opacity-20"></div>
 
-      {/* Text container with padding from edges */}
+      {/* Text container */}
       <div className="absolute left-8 bottom-8 text-white max-w-xs">
         <h1 className="text-3xl font-bold mb-3 leading-snug">
           Manage Your Home with Smart Home App
@@ -39,7 +34,7 @@ const goToContact = () => {
           Control your smart home devices and optimize energy usage with our intuitive app.
         </p>
         <button
-          onClick={goToContact}
+          onClick={goToFeatures}
           className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-5 rounded-full w-fit text-sm"
         >
           Get Started
