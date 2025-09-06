@@ -6,7 +6,7 @@ const devicesMock = [
   { id: 2, name: "Thermostat", type: "Climate", route: "/devices/thermostat" },
   { id: 3, name: "Security Camera", type: "Camera", route: "/devices/cameras" },
   { id: 4, name: "Kitchen Speaker", type: "Audio", route: "/devices/speakers" },
-  { id: 5, name: "Doors lock", type: "Access", route: "/devices/locks" },
+  { id: 5, name: "Doors Lock", type: "Access", route: "/devices/locks" },
 ];
 
 const typeIcons = {
@@ -21,7 +21,7 @@ const DevicesPage = () => (
   <div className="flex flex-col min-h-screen bg-futuristic-dark text-futuristic-green px-4 py-8">
     {/* Title */}
     <div className="text-center mb-12">
-      <h1 className="text-[clamp(1.5rem,4vw,2.25rem)] font-bold mb-1">
+      <h1 className="text-[clamp(1.5rem,4vw,2.25rem)] text-white font-bold mb-1">
         Smart Devices
       </h1>
       <p className="text-gray-400 text-[clamp(0.875rem,2.5vw,1rem)]">
