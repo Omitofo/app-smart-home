@@ -26,7 +26,7 @@ const SpeakersPage = () => {
             >
               {/* Clickable area for toggle */}
               <div
-                className="cursor-pointer flex flex-col items-center"
+                className="cursor-pointer text-white flex flex-col items-center"
                 onClick={() => toggleSpeaker(speaker.id)}
               >
                 {/* Speaker Icon */}
