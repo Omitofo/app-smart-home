@@ -54,10 +54,11 @@ const AboutUsSection = () => {
           {activeTab === "who" && (
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
               {teamMembers.map((member) => (
-                <div
-                  key={member.name}
-                  className="bg-homepage-gray p-6 rounded-3xl shadow-lg h-80 flex flex-col items-center transition hover:scale-105"
-                >
+       <div
+  key={member.name}
+  className="bg-homepage-gray px-6 py-8 rounded-3xl shadow-lg flex flex-col items-center transition hover:scale-105"
+>
+
                   <img
                     src={member.photo}
                     alt={member.name}
