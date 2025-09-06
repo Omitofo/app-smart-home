@@ -136,7 +136,7 @@ export const useStore = create(
         })),
     }),
     {
-      name: "smart-home-storage",
+      name: "smart-home-storage-v2",
     }
   )
 );
