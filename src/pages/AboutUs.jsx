@@ -24,7 +24,7 @@ const tabs = [
 ];
 
 const AboutUsSection = () => {
-  const [activeTab, setActiveTab] = useState("who");
+  const [activeTab, setActiveTab] = useState("mission");
 
   return (
 <section id="about" className="bg-black/40 py-12 md:py-16 rounded-3xl">
