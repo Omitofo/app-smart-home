@@ -35,9 +35,9 @@ export const useStore = create(
 
       // Thermostats
       zones: [
-        { id: 1, name: "Living Room", temp: 22, mode: "Normal", active: false },
-        { id: 2, name: "Master Bedroom", temp: 22, mode: "Normal", active: false },
-        { id: 3, name: "Kids Room 1", temp: 22, mode: "Normal", active: false },
+        { id: 1, name: "Living Room", temp: 22, mode: "Normal", active: true },
+        { id: 2, name: "Master Bedroom", temp: 22, mode: "Normal", active: true },
+        { id: 3, name: "Kids Room 1", temp: 22, mode: "Normal", active: true },
         { id: 4, name: "Kitchen", temp: 22, mode: "Normal", active: false },
       ],
       toggleZone: (id) =>
@@ -81,9 +81,9 @@ export const useStore = create(
       // Speakers
       speakers: [
         { id: 1, room: "Living Room", status: true, volume: 70 },
-        { id: 2, room: "Kitchen", status: false, volume: 0 },
+        { id: 2, room: "Kitchen", status: true, volume: 50 },
         { id: 3, room: "Master Bedroom", status: false, volume: 0 },
-        { id: 4, room: "Family Room", status: false, volume: 0 },
+        { id: 4, room: "Family Room", status: true, volume: 50 },
         { id: 5, room: "Office", status: false, volume: 0 },
         { id: 6, room: "Patio", status: false, volume: 0 },
         { id: 7, room: "Garage", status: false, volume: 0 },
@@ -104,8 +104,8 @@ export const useStore = create(
       // Settings (Dark Mode removed)
           settings: [
         { id: 1, name: "Notifications", enabled: true },
-        { id: 2, name: "Auto Updates", enabled: false },
-        { id: 3, name: "Energy Saver Mode", enabled: false },
+        { id: 2, name: "Auto Updates", enabled: true },
+        { id: 3, name: "Energy Saver Mode", enabled: true },
         { id: 4, name: "Silence Mode", enabled: false },
         { id: 5, name: "Location Access", enabled: true },
         { id: 6, name: "Voice Control", enabled: false },
@@ -120,11 +120,11 @@ export const useStore = create(
       // Locks
       locks: [
         { id: 1, name: "Front Door", locked: true },
-        { id: 2, name: "Back Door", locked: false },
+        { id: 2, name: "Back Door", locked: true },
         { id: 3, name: "Garage Door", locked: true },
-        { id: 4, name: "2nd Floor Door", locked: true },
+        { id: 4, name: "2nd Floor Door", locked: false },
         { id: 5, name: "Kids Room", locked: true },
-        { id: 6, name: "Basement Door", locked: false },
+        { id: 6, name: "Basement Door", locked: true },
         { id: 7, name: "Patio Door", locked: true },
         { id: 8, name: "Office Door", locked: false },
       ],
@@ -136,7 +136,7 @@ export const useStore = create(
         })),
     }),
     {
-      name: "smart-home-storage-v3",
+      name: "smart-home-storage-v4",
     }
   )
 );
