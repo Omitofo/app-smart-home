@@ -2,7 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Variable para viewport dinámico en mobile */
-:root {
-  --vh: 100%;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Reset + estilos globales */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: var(--app-bg);
+  color: white;
+}
+
+body {
+  padding-bottom: env(safe-area-inset-bottom); /* para la zona segura inferior */
+}
+
+body::after {
+  content: '';
+  display: block;
+  height: env(safe-area-inset-bottom);
+  background-color: var(--app-bg); /* negro en la zona de home indicator */
 }
