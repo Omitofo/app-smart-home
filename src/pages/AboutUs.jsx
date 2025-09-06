@@ -27,7 +27,7 @@ const AboutUsSection = () => {
   const [activeTab, setActiveTab] = useState("who");
 
   return (
-    <section id="about" className="bg-black/40 py-16 rounded-3xl min-h-[calc(var(--vh)*100)]">
+<section id="about" className="bg-black/40 py-12 md:py-16 rounded-3xl">
           <div className="mx-auto max-w-6xl text-center px-6">
         <h2 className="text-2xl font-bold mb-4 text-white">About Us</h2>
 
@@ -55,9 +55,9 @@ const AboutUsSection = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
               {teamMembers.map((member) => (
        <div
-  key={member.name}
-  className="bg-homepage-gray px-6 py-8 rounded-3xl shadow-lg flex flex-col items-center transition hover:scale-105"
->
+          key={member.name}
+          className="bg-homepage-gray px-6 py-8 rounded-3xl shadow-lg flex flex-col items-center transition hover:scale-105"
+       >
 
                   <img
                     src={member.photo}
