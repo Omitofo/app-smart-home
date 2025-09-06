@@ -24,7 +24,7 @@ const Hero = () => {
         <h1 className="text-3xl font-bold mb-3 leading-snug drop-shadow-lg">
           Manage Your Home with Smart Home App
         </h1>
-        <p className="text-sm mb-3 max-w-[25rem] drop-shadow-md">
+        <p className="text-sm mb-3 max-w-[15rem] drop-shadow-md">
           Control your smart home devices and optimize energy usage with our intuitive app.
         </p>
 
