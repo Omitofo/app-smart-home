@@ -30,7 +30,7 @@ const CamerasPage = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-futuristic-dark text-futuristic-green px-4 py-12">
+ <div className="flex flex-col min-h-[calc(var(--vh)*100)] bg-[var(--app-bg)] text-futuristic-green px-4 py-12">
       <main className="flex-grow max-w-7xl mx-auto space-y-12">
 
         {/* Title */}

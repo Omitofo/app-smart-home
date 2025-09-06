@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Variable para viewport dinámico en mobile */
+:root {
+  --vh: 100%;
+}

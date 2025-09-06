@@ -39,8 +39,8 @@ const ContactUs = () => {
   };
 
   return (
-    <section className="mt-16 mb-12 max-w-4xl mx-auto px-4">
-      <h2 className="text-2xl font-bold text-center mb-3 text-white">
+  <section className="mt-16 mb-12 max-w-4xl mx-auto px-4 bg-[var(--app-bg)] min-h-[calc(var(--vh)*100)]">
+        <h2 className="text-2xl font-bold text-center mb-3 text-white">
         Contact Us
       </h2>
       <p className="text-center text-gray-400 mb-6 text-sm">

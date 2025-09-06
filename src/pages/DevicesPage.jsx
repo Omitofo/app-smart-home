@@ -18,7 +18,7 @@ const typeIcons = {
 };
 
 const DevicesPage = () => (
-  <div className="flex flex-col min-h-screen bg-futuristic-dark text-futuristic-green px-4 py-8">
+<div className="flex flex-col min-h-[calc(var(--vh)*100)] bg-[var(--app-bg)] text-futuristic-green px-4 py-8">
     {/* Title */}
     <div className="text-center mb-12">
       <h1 className="text-[clamp(1.5rem,4vw,2.25rem)] text-white font-bold mb-1">

@@ -8,7 +8,7 @@ const SpeakersPage = () => {
   const CARD_HEIGHT = 250; // altura fija
 
   return (
-    <div className="flex flex-col min-h-screen bg-futuristic-dark text-futuristic-green px-4 py-8">
+<div className="flex flex-col min-h-[calc(var(--vh)*100)] bg-[var(--app-bg)] text-futuristic-green px-4 py-8">
       <main className="flex-grow max-w-6xl mx-auto">
         <h1 className="text-4xl font-bold mb-4 text-white text-center">Speakers Control</h1>
         <p className="text-center text-gray-400 mb-10">

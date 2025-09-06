@@ -29,8 +29,11 @@ const HelpPage = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-futuristic-dark text-futuristic-green px-4 py-12">
-      {/* Hero */}
+      <div
+        className="flex flex-col bg-futuristic-dark text-futuristic-green px-4 py-12"
+        style={{ minHeight: 'calc(var(--vh, 1vh) * 100)' }}
+      >
+        {/* Hero */}
       <div className="text-center mb-12">
         <FiHelpCircle className="mx-auto text-futuristic-green text-6xl mb-4 animate-pulse" />
         <h1 className="text-4xl text-white font-bold mb-2">Need Help?</h1>

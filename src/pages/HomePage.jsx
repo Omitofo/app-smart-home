@@ -20,7 +20,7 @@ const HomePage = () => {
   ];
 
   return (
-    <div className="flex flex-col min-h-screen bg-futuristic-dark text-futuristic-green">
+<div className="flex flex-col min-h-[calc(var(--vh)*100)] bg-[var(--app-bg)] text-futuristic-green">
        <main className="flex-grow px-4 py-8 max-w-7xl mx-auto flex flex-col space-y-32">
         <Hero />
 

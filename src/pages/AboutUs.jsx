@@ -27,8 +27,8 @@ const AboutUsSection = () => {
   const [activeTab, setActiveTab] = useState("who");
 
   return (
-    <section id="about" className="bg-homepage-black py-16 rounded-3xl">
-      <div className="mx-auto max-w-6xl text-center px-6">
+    <section id="about" className="bg-[var(--app-bg)] py-16 rounded-3xl min-h-[calc(var(--vh)*100)]">
+          <div className="mx-auto max-w-6xl text-center px-6">
         <h2 className="text-2xl font-bold mb-4 text-white">About Us</h2>
 
         {/* Tabs */}
