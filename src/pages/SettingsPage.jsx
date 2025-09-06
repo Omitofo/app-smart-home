@@ -35,7 +35,7 @@ const SettingsPage = () => {
                   toggleSetting(setting.id);
                 }}
               >
-                {setting.enabled ? "ON!" : "OFF!"}
+                {setting.enabled ? "ON" : "OFF"}
               </button>
             </div>
           ))}
