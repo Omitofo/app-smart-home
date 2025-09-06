@@ -4,7 +4,7 @@ import { ArrowUpRight } from "lucide-react";
 const FeatureCard = ({ icon, title, description, route }) => (
   <Link
     to={route}
-    className="relative bg-homepage-gray text-white p-5 rounded-3xl shadow-lg flex flex-col items-center hover:bg-gray-700 transition group"
+    className="relative bg-homepage-gray text-white p-5 rounded-3xl shadow-lg flex flex-col items-center hover:bg-futuristic-green/40 transition group"
   >
     {/* Arrow icon top-right */}
     <div className="absolute top-3 right-3 bg-homepage-black p-1 rounded-full opacity-70 group-hover:opacity-100 transition">

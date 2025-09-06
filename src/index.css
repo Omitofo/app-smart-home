@@ -11,7 +11,7 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
-  background-color: var(--app-bg);
+  background-color: black;
   color: white;
 }
 
@@ -23,5 +23,5 @@ body::after {
   content: '';
   display: block;
   height: env(safe-area-inset-bottom);
-  background-color: var(--app-bg); /* negro en la zona de home indicator */
+  background-color: black; /* negro en la zona de home indicator */
 }

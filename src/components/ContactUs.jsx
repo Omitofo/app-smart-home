@@ -58,7 +58,7 @@ const ContactUs = () => {
         </div>
 
         {/* Right column: form */}
-        <div className="lg:w-1/2 p-6 flex items-center justify-center bg-homepage-black">
+        <div className="lg:w-1/2 p-6 flex items-center justify-center bg-black/40">
           <div className="w-full">
             {!submitted ? (
               <form onSubmit={handleSubmit} className="w-full text-sm">

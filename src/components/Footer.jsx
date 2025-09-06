@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 const Footer = () => (
-  <footer className="mt-10 bg-futuristic-dark border-t border-futuristic-gray shadow-inner text-white">
+  <footer className="mt-10 bg-black/40 border-t border-futuristic-gray shadow-inner text-white">
     <div className="max-w-7xl mx-auto px-4 py-6 flex flex-col md:flex-row justify-between items-center">
       
       {/* Left: App Info */}
