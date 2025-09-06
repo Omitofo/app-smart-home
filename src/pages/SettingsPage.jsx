@@ -5,8 +5,8 @@ const SettingsPage = () => {
   const toggleSetting = useStore((state) => state.toggleSetting);
 
   return (
-<div className="flex flex-col min-h-[calc(var(--vh)*100)] bg-[var(--app-bg)] text-futuristic-green p-6">
-        <h1 className="text-3xl font-bold mb-6 text-white text-center">Settings</h1>
+    <div className="flex flex-col min-h-[calc(var(--vh)*100)] bg-[var(--app-bg)] text-futuristic-green p-6">
+      <h1 className="text-3xl font-bold mb-6 text-white text-center">Settings</h1>
 
       {/* Container with max width */}
       <div className="mx-auto max-w-5xl">
@@ -21,17 +21,21 @@ const SettingsPage = () => {
                   ? "bg-gradient-to-r from-futuristic-green to-green-500 text-futuristic-dark"
                   : "bg-futuristic-gray opacity-80 pointer-events-auto"
                 }`}
+              style={{ minHeight: "6rem", height: "6rem" }} // fija la altura del card
               onClick={() => toggleSetting(setting.id)}
             >
+              {/* Nombre del setting */}
               <span className="text-lg font-medium flex-1 break-words">
                 {setting.name}
               </span>
+
+              {/* Botón fijo */}
               <button
-                className={`ml-4 px-6 py-2 rounded-full font-semibold transition text-sm
+                className={`ml-4 w-16 h-8 rounded-full font-semibold text-sm transition
                   ${setting.enabled ? "bg-white text-futuristic-dark" : "bg-futuristic-red text-futuristic-dark"}
                 `}
                 onClick={(e) => {
-                  e.stopPropagation(); // prevent double toggle
+                  e.stopPropagation(); // previene doble toggle
                   toggleSetting(setting.id);
                 }}
               >
