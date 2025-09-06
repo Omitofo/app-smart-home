@@ -41,7 +41,7 @@ const AboutUsSection = () => {
                 ${
                   activeTab === tab.id
                     ? "bg-futuristic-green text-futuristic-dark shadow-lg"
-                    : "bg-homepage-gray text-white hover:bg-gray-600"
+                    : "bg-homepage-gray text-white hover:bg-futuristic-green/40"
                 }`}
             >
               {tab.label}
